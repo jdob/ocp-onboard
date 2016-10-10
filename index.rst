@@ -25,6 +25,7 @@ Contents:
 
 * Getting Started
  * Terminology (service, route, etc.)
+ * Installing the CDK (overview and links)
  * If you have a working Docker container
   * Deploying from Docker Hub
    * Example
