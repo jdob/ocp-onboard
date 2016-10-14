@@ -27,6 +27,10 @@ information on installing the Red Hat Container Development Kit (CDK).
 registry (such as Docker Hub) or a Dockerfile, view the existing container
 deployment guide.
 
+:doc:`basic-usage` - Once you've got an application deployed, there are some
+basic commands that can be run to understand all of its pieces and how to
+interact with it.
+
 :doc:`development` - If you're just beginning to port an application to
 be run on containers, or beginning new development, the development guide
 can provide more information on how to use OpenShift in an active development
@@ -42,7 +46,8 @@ Contents
    terminology
    installation
    deployment
+   basic-usage
    development
-   techniques
+   anatomy
    features
    advanced

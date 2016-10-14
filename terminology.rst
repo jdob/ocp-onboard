@@ -1,6 +1,9 @@
 Terminology
 ===========
 
+.. Currently, these are organized in a flow from the most high-level concepts
+   to lower ones, but I may reorder this alphabetically in the future.
+
 .. glossary::
 
   project
@@ -47,14 +50,33 @@ Terminology
     * Images from external Docker registries
     * Other image streams
 
-  deployment configuration
-    TODO
-
   replication controller
-    TODO
+    A replication controller is used to ensure a specified number of
+    pods for an application are running at a given time. The replication
+    controller automatically reacts to changes to deployed pods, both the
+    removal of existing pods (deletion, crashing, etc.) or the addition of
+    extra pods that are not desired. The pods are automatically added or
+    removed from the service to ensure its uptime.
+
+  deployment configuration
+    A deployment configuration contains the details of a particular application
+    deployment:
+
+    * The configuration used in the :term:`replication controller` definition,
+      such as the number of replicas to ensure
+    * Triggers for automatically performing an updated deployment, such as
+      when an image is tagged or the source code in a :term:`source-to-image`
+      deployment is changed
+    * The strategy for transitioning between deployments when upgrading
+    * Lifecycle hooks
 
   service
-    TODO
+    A service functions as a load balancer and proxy to underlying pods.
+    Services are assigned IP addresses and ports and will delegate requests
+    to an appropriate pod that can field it.
 
   route
+    TODO
+
+  source-to-image
     TODO
