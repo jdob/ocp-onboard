@@ -37,3 +37,24 @@ Terminology
     can easily be used to build containers through OpenShift. Additionally,
     OpenShift provides a number of ways to build images, either from a
     Dockerfile or directly from source hosted in a git repository.
+
+  image stream
+    An image stream is a series of Docker images identified by one or more
+    tags. Image streams are capable of aggregating images from a variety
+    of sources into a single view, including
+
+    * Images stored in OpenShift's integrated Docker repository
+    * Images from external Docker registries
+    * Other image streams
+
+  deployment configuration
+    TODO
+
+  replication controller
+    TODO
+
+  service
+    TODO
+
+  route
+    TODO
