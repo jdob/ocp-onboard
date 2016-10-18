@@ -11,7 +11,8 @@ Partner Onboarding Guide
    that fields requests, but without assuming any knowledge or black magic from
    other libraries.
 
-This guide is intended to help developers and integrators
+This guide is intended to help developers and integrators get started using
+and developing for the OpenShift Container Platform.
 
 Quick Start
 -----------
