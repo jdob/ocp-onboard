@@ -50,5 +50,4 @@ Contents
    basic-usage
    development
    anatomy
-   features
    advanced
