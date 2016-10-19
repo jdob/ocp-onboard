@@ -10,14 +10,22 @@ Source to Image
 Example
 ~~~~~~~
 
-Creating a Builder Image
-------------------------
+Creating Images
+---------------
+
+.. https://docs.openshift.com/container-platform/3.3/creating_images/guidelines.html
 
 Example
 ~~~~~~~
 
 Environment Variables
 ---------------------
+
+Example
+~~~~~~~
+
+Users
+-----
 
 Example
 ~~~~~~~
@@ -30,6 +38,12 @@ Example
 
 Writing Deployment Templates
 ----------------------------
+
+Example
+~~~~~~~
+
+Creating a Builder Image
+------------------------
 
 Example
 ~~~~~~~

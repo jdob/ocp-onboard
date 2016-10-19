@@ -7,9 +7,6 @@ Advanced Topics
    of their existence and usefulness. References to the appropriate sections in the
    developer guide will be provided.
 
-Users
------
-
 Daemonsets
 ----------
 
