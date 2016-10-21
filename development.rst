@@ -1,15 +1,6 @@
 Development on OpenShift
 ========================
 
-Understanding Builder Images
-----------------------------
-
-Source to Image
----------------
-
-Example
-~~~~~~~
-
 Creating Images
 ---------------
 
@@ -41,6 +32,8 @@ Writing Deployment Templates
 
 Example
 ~~~~~~~
+
+.. _create_builder_image:
 
 Creating a Builder Image
 ------------------------

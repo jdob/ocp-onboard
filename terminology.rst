@@ -50,6 +50,10 @@ Terminology
     * Images from external Docker registries
     * Other image streams
 
+  build configuration
+    A build configuration describes a single build definition and a set of
+    triggers for when a new build should be created.
+
   replication controller
     A replication controller is used to ensure a specified number of
     pods for an application are running at a given time. The replication
