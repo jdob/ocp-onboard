@@ -1,9 +1,11 @@
-Deploying or Building an Existing Container
+Building or Deploying an Existing Container
 ===========================================
 
-.. Starting point for devs who are using Docker already and want to quickly
-   get those apps into OpenShift. I'm not in love with the router stuff being
-   here, but that's also not "advanced" either
+OpenShift can deploy existing code in a number of ways. Pre-built containers
+stored in a Docker registry, such as `Docker Hub <https://hub.docker.com/>`_
+can be downloaded and deployed directly to OpenShift. OpenShift can also
+build images from source code in a `git https://git-scm.com/`_ repository,
+regardless of whether or not a Dockerfile is present.
 
 Deploying from Docker Hub
 -------------------------
@@ -26,11 +28,7 @@ the :doc:`anatomy` section guide for more information on the different
 resources that were created, or the :doc:`basic-usage` guide for other ways
 to interact with the newly deployed application.
 
-.. warning::
-  By default, the newly deployed application will not be accessible. A
-  :term:`route` is needed to expose the service to the outside world. See
-  the :ref:`routes` section for more information on how to expose and
-  access a service.
+.. include:: includes/route-warning.txt
 
 UI Example
 ~~~~~~~~~~

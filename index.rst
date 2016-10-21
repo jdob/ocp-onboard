@@ -25,8 +25,9 @@ want to set up a local environment, check out the installation guide for more
 information on installing the Red Hat Container Development Kit (CDK).
 
 :doc:`deployment` - If you already have a container deployed to a public
-registry (such as Docker Hub) or a Dockerfile, view the existing container
-deployment guide.
+registry (such as Docker Hub) or a Dockerfile, view the container
+deployment guide. This guide also covers having OpenShift perform the image
+build steps for you against your source code repository.
 
 :doc:`basic-usage` - Once you've got an application deployed, there are some
 basic commands that can be run to understand all of its pieces and how to
