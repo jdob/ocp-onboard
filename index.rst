@@ -33,8 +33,8 @@ build steps for you against your source code repository.
 basic commands that can be run to understand all of its pieces and how to
 interact with it.
 
-:doc:`development` - If you're just beginning to port an application to
-be run on containers, or beginning new development, the development guide
+:doc:`integration` - If you're just beginning to port an application to
+be run on containers, or beginning new development, the integration guide
 can provide more information on how to use OpenShift in an active development
 environment.
 
@@ -49,6 +49,6 @@ Contents
    installation
    deployment
    basic-usage
-   development
+   integration
    anatomy
    advanced
