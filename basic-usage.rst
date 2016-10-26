@@ -65,13 +65,20 @@ using::
 As with ``get``, the output will vary based on the type of resource being
 described.
 
-
 .. _routes:
 
 Routes
 ------
 
-TODO
+When a container is created in OpenShift, it is initially assigned an IP
+address and an internal service name within the scope of its project. The
+service name allows it to be accessed by other applications running inside
+of the same project. This becomes a useful default for large projects that
+have a number of internal services but only a small amount of public
+endpoints.
+
+An explicit step is required to make a container publicly accessible. The
+application must be `exposed` by creating a route.
 
 Remote Shell into a Container
 -----------------------------
