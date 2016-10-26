@@ -176,8 +176,75 @@ presence in the container, the previous ``curl`` command can be run again:
 Users
 -----
 
+One of the more common obstacles encountered with creating new images
+revolves around the user running the container process. By default, Docker
+containers are run as root. This can become a
+`security issue <http://blog.dscpl.com.au/2015/12/don-run-as-root-inside-of-docker.html>`_
+as any process that breaks out of the container will retain the same privileges on the host
+machine; root in a container would have access to root on the host.
+
+By default, OpenShift will issue a warning when loading an image defined to
+run as root and, in many cases, the deployment will fail with some form of
+permission error. These failures are due to the fact that OpenShift creates a
+random, non-privileged user (with no corresponding UID on the host machine)
+and runs the container with that user. This is an added security benefit
+provided by OpenShift and, while not difficult, must be acknowledged when
+creating images.
+
+Since OpenShift is generating a random UID, the solution isn't as simple as
+`creating and using a user <http://blog.dscpl.com.au/2015/12/overriding-user-docker-containers-run-as.html>`_
+(by its name) within the container. There are potential security issues
+where a created user can still give itself root privileges. The use of a
+random ID, specified by OpenShift, also supports added security for
+multi-tenancy by forcing persistent storage volume UIDs to be unique for each
+project.
+
+In short, since OpenShift runs containers as a randomized, non-privileged user,
+the image must be constructed with those limitations in mind.
+
+The common solution is to make the necessary files and directories
+`writable by the root group <http://blog.dscpl.com.au/2015/12/random-user-ids-when-running-docker.html>`_.
+
 Example
 ~~~~~~~
+
+Below is a snippet from a Dockerfile used to run httpd as a non-privileged
+container. This setup will host pages from the ``/opt/app-root`` directory.
+For brevity, the Dockerfile ``EXPOSE`` and corresponding
+httpd configuration changes to serve on a non-privileged port are not
+included in the snippet.
+
+.. code-block:: none
+   :emphasize-lines: 11, 18, 23
+
+   # Create a non root account called 'default' to be the owner of all the
+   # files which the Apache httpd server will be hosting. This account
+   # needs to be in group 'root' (gid=0) as that is the group that the
+   # Apache httpd server would use if the container is later run with a
+   # unique user ID not present in the host account database, using the
+   # command 'docker run -u'.
+
+   ENV HOME=/opt/app-root
+
+   RUN mkdir -p ${HOME} && \
+       useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
+               -c "Default Application User" default
+
+   # Fixup all the directories under the account so they are group writable
+   # to the 'root' group (gid=0) so they can be updated if necessary, such
+   # as would occur if using 'oc rsync' to copy files into a container.
+
+   RUN chown -R 1001:0 /opt/app-root && \
+       find ${HOME} -type d -exec chmod g+ws {} \;
+
+   # Ensure container runs as non root account from its home directory.
+   WORKDIR ${HOME}
+   USER 1001
+
+Note the usage of a numeric UID instead of the named user. This is done for
+portability across hosting providers and will pass checks to ensure that,
+at very least, the container is not being run as root (this check is
+impossible using named users).
 
 Labels
 ------
