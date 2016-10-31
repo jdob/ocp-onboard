@@ -132,11 +132,60 @@ of the OpenShift documentation.
 Remote Shell into a Container
 -----------------------------
 
-TODO
+While debugging an application, there are many times where it can be useful
+open a terminal into a running container. Both the web UI and command line
+interface support this directly; there is no need to look up IP addresses
+or manually deal with SSH keys.
+
+The ``rsh`` command is used to connect to a specific pod by its name. The
+pod names can be retrieved using the ``get`` command under the ``pods``
+resource type::
+
+  $ oc get pods
+  NAME                 READY     STATUS    RESTARTS   AGE
+  python-web-4-hwwub   1/1       Running   1          6d
+
+  $ oc rsh python-web-4-hwwub
+  # ls
+  bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  src  srv  sys  tmp  usr  var
 
 Copying Files into a Running Container
 --------------------------------------
 
-TODO
+Similar to opening a remote shell, the OpenShift interfaces provide built-in
+support for copying files from a local system into a running container.
 
+.. warning::
 
+  Keep in mind that containers are typically treated as ephemeral. Files
+  copied to a running container in this fashion are not guaranteed to survive
+  pod restarts or scaling operations. This functionality is primarily intended
+  for debugging or development situations.
+
+Apropos of its name, the ``rsync`` command will attempt to use rsync to
+transmit files if the service is available on the destination container. If
+it is not, OpenShift will fall back to sending a tarfile with the contents.
+Keep in mind that the normal restrictions when using tar over rsync will
+be present; the destination directory must exist and the entire contents will
+be transmitted rather than only sending changed files.
+
+The ``rsync`` command works similar to the tranditional rsync command,
+accepting the source and destination directories. Instead of specifying a
+hostname or IP address, the pod name is used in the destination::
+
+  $ oc get pods
+  NAME                 READY     STATUS    RESTARTS   AGE
+  python-web-4-hwwub   1/1       Running   1          6d
+
+  $ oc rsync . python-web-4-hwwub:/doc
+  WARNING: cannot use rsync: rsync not available in container
+  [output truncated]
+
+  $ oc rsh python-web-4-hwwub
+  # ls /doc
+  Makefile  README.md  _build  advanced.rst  basic-usage.rst
+
+.. note::
+
+  In the above example, rsync was not supported by the container, so the
+  ``/doc`` directory was manually created in advance.
