@@ -78,7 +78,56 @@ have a number of internal services but only a small amount of public
 endpoints.
 
 An explicit step is required to make a container publicly accessible. The
-application must be `exposed` by creating a route.
+application must be `exposed` by creating a route. When a route is exposed,
+the host name can be specified. In most cases, the DNS resolution for the
+hostname is handled outside of OpenShift. If a hostname is not provided,
+OpenShift will generate an xip.io address that can be used local to the
+OpenShift instance.
+
+By default, `HAProxy <http://www.haproxy.org/>`_ is used to manage the routes,
+however `plugins for other providers are available <https://docs.openshift.org/latest/install_config/router/index.html#install-config-router-overview>`_.
+Routes may optionally be configured with TLS credentials for secure
+communications.
+
+Routes are created through the ``expose`` command. Arguments are supported for
+customizing the route (the most common being ``--hostname`` when using an
+existing DNS server), but for development purposes, the defaults are usually
+sufficient::
+
+  $ oc expose service python-web
+  route "python-web" exposed
+
+  $ oc get route
+  NAME         HOST/PORT                                    PATH      SERVICES     PORT       TERMINATION
+  python-web   python-web-python-web.apps.10.2.2.2.xip.io             python-web   8080-tcp
+
+  $ oc describe route
+  Name:           python-web
+  Namespace:      python-web
+  Created:        6 seconds ago
+  Labels:         app=python-web
+  Annotations:    openshift.io/host.generated=true
+  Requested Host: python-web-python-web.apps.10.2.2.2.xip.io exposed on router router 6 seconds ago
+
+  Path:            <none>
+  TLS Termination: <none>
+  Insecure Policy: <none>
+  Endpoint Port:   8080-tcp
+
+  Service:   python-web
+  Weight:    100 (100%)
+  Endpoints: 172.17.0.12:8080
+
+In the above example, OpenShift generated a corresponding xip.io address that
+can be used to access the service. A quick test from the host running the
+OpenShift VM shows the service can be accessed::
+
+  $ curl python-web-python-web.apps.10.2.2.2.xip.io
+  Hello World
+
+More information on routes can be found in the
+`corresponding section <https://docs.openshift.org/latest/architecture/core_concepts/routes.html>`_
+of the OpenShift documentation.
 
 Remote Shell into a Container
 -----------------------------
