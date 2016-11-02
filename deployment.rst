@@ -16,8 +16,8 @@ The simplest way to get an existing image into OpenShift is to retrieve
 the image from Docker Hub. OpenShift will automatically create a new
 :term:`image stream` and map to the image in Docker Hub.
 
-CLI Example
-~~~~~~~~~~~
+Example
+~~~~~~~
 
 Create a new application in the current project, specifying the name of the
 image in Docker Hub::
@@ -25,17 +25,9 @@ image in Docker Hub::
   $ oc new-app jdob/python-web
 
 That's it. OpenShift will take care of retrieving the image and setting up
-all of the necessary resources to deploy pods for the application. See
-the :doc:`anatomy` section guide for more information on the different
-resources that were created, or the :doc:`basic-usage` guide for other ways
-to interact with the newly deployed application.
+all of the necessary resources to deploy pods for the application.
 
 .. include:: includes/route-warning.txt
-
-UI Example
-~~~~~~~~~~
-
-TODO
 
 .. _build_dockerfile:
 
@@ -60,8 +52,8 @@ If a Dockerfile is present, OpenShift will perform the following steps:
 * The remainder of the necessary components, as described in :doc:`anatomy`
   are created, including the replication controller and service.
 
-CLI Example
-~~~~~~~~~~~
+Example
+~~~~~~~
 
 The standard command for creating an application is used, but instead of
 referencing a specific image to deploy, the URL to the git repository is
@@ -124,11 +116,6 @@ automatically trigger a new build when a commit is pushed.
 
 .. include:: includes/route-warning.txt
 
-UI Example
-~~~~~~~~~~
-
-TODO
-
 .. _build_s2i:
 
 Source to Image
@@ -137,7 +124,6 @@ Source to Image
 OpenShift's Source-to-Image (S2I for short) functionality takes the ability to
 build images from a repository one step further by removing the need for
 an explicit Dockerfile.
-
 
 Not all Docker images can be used as the basis for an S2I build. Builder
 Images, as they are known, have minimal but specific requirements regarding
@@ -181,8 +167,8 @@ automatically created, a build is triggered, and a new deployment performed.
   :ref:`define a custom builder image <create_builder_image>` with the
   appropriate ports exposed.
 
-CLI Example
-~~~~~~~~~~~
+Example
+~~~~~~~
 
 The standard command for creating an application is used, but instead of
 referencing a specific image to deploy, the URL to the git repository is
@@ -234,12 +220,16 @@ As noted in :ref:`build_dockerfile`, the webhook URLs can be used to have
 the source repository automatically trigger a new build when new commits
 are made.
 
-.. include:: includes/route-warning.txt
+.. note::
 
-UI Example
-~~~~~~~~~~
-
-TODO
+  Unlike deploying an existing image, applications created through S2I
+  are automatically configured with a route.
 
 Next Steps
 ----------
+
+Now that an application is deployed, see the :doc:`anatomy` section guide
+for more information on the different resources that were created, or the
+:doc:`basic-usage` guide for other ways to interact with the newly
+deployed application. Information on enhancing container images to utilize
+OpenShift's features can be found in the :doc:`integration` guide.
