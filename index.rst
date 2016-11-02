@@ -38,7 +38,6 @@ be run on containers, or beginning new development, the integration guide
 can provide more information on how to use OpenShift in an active development
 environment.
 
-
 Contents
 --------
 
@@ -49,6 +48,7 @@ Contents
    installation
    deployment
    basic-usage
+   storage
    integration
    anatomy
    advanced

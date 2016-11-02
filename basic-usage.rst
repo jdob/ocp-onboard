@@ -129,6 +129,15 @@ More information on routes can be found in the
 `corresponding section <https://docs.openshift.org/latest/architecture/core_concepts/routes.html>`_
 of the OpenShift documentation.
 
+Persistent Storage
+------------------
+
+Along with routes, a common configuration made to pods is the addition of
+persistent storage volumes. As this is a lengthy topic, it can be found in
+the :doc:`storage` section of this guide.
+
+.. _remote_shell:
+
 Remote Shell into a Container
 -----------------------------
 
