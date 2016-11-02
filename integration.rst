@@ -5,7 +5,6 @@ While it is simple to :doc:`deploy an image on OpenShift <deployment>`,
 there are certain guidelines and integration techniques that should be
 adhered to.
 
-
 Creating Images
 ---------------
 
@@ -254,8 +253,6 @@ Example
 
 Writing Deployment Templates
 ----------------------------
-
-
 
 Example
 ~~~~~~~
