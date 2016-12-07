@@ -51,4 +51,3 @@ Contents
    storage
    integration
    anatomy
-   advanced
