@@ -142,7 +142,15 @@ html_theme = 'alabaster'
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 #
-# html_logo = None
+html_logo = '_static/openshift-logo.svg'
+
+html_theme_options = {
+    'show_powered_by': False,
+    'fixed_sidebar': True,
+    'page_width': '1050px',
+    'font_family': '"Open Sans", Helvetica, Arial, sans-serif',
+    'head_font_family': '"Open Sans", Helvetica, Arial, sans-serif',
+}
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -195,7 +203,7 @@ html_theme = 'alabaster'
 
 # If true, links to the reST sources are added to the pages.
 #
-# html_show_sourcelink = True
+html_show_sourcelink = False
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 #

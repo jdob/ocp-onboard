@@ -103,7 +103,7 @@ can be used to view and modify environment variables for the configuration.
 When changes are saved by pressing the "Save" button, a new deployment
 is triggered using the new configuration values.
 
-.. image:: images/env_variables.png
+.. image:: _static/env_variables.png
 
 Alternatively, the CLI's ``edit`` command can be used to interactively edit
 the YAML representation of many resources. This command, called by specifying
