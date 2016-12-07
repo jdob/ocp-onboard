@@ -128,7 +128,7 @@ an explicit Dockerfile.
 Not all Docker images can be used as the basis for an S2I build. Builder
 Images, as they are known, have minimal but specific requirements regarding
 files that OpenShift will invoke during the build. More information on
-creating new builder images can be found in the :ref:`create_builder_image`
+creating new builder images can be found in the create_builder_image
 section.
 
 There are two ways to determine the base image that will be used in the build:
@@ -163,8 +163,7 @@ automatically created, a build is triggered, and a new deployment performed.
   It is important to understand how base images are configured. Since there
   is no user-defined Dockerfile in place, applications are restricted to
   using ports exposed by the builder image. Depending on the application,
-  it may be useful to
-  :ref:`define a custom builder image <create_builder_image>` with the
+  it may be useful to define a custom builder image with the
   appropriate ports exposed.
 
 Example
