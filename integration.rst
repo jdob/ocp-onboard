@@ -248,25 +248,56 @@ impossible using named users).
 Labels
 ------
 
-Example
-~~~~~~~
+In this context, labels refer to the Docker concept of labels: metadata
+on an image. These are specified in the Dockerfile and are included in the
+built image.
 
-Writing Deployment Templates
-----------------------------
+Partner container certification requires that images include the following
+labels:
 
-Example
-~~~~~~~
+ * Name
+ * Vendor
+ * Version
+ * Release
 
-.. _create_builder_image:
-
-Creating a Builder Image
-------------------------
-
-Example
-~~~~~~~
-
-Liveness and Readiness
-----------------------
+The container partner team provides a sample Dockerfile that can be used
+as a template for images suitable for certification. It can be found
+on `GitHub <https://github.com/RHsyseng/container-rhel-examples/blob/master/starter/Dockerfile>`_.
 
 Example
 ~~~~~~~
+
+The following snippet uses the Dockerfile ``LABEL`` directive to define
+the minimum required labels::
+
+  LABEL Name="jdob/python-web" \
+        Vendor="Red Hat" \
+        Version="1.0" \
+        Release="1"
+
+The labels can be viewed using the ``docker inspect`` command (the output
+below is truncated::
+
+  $ docker inspect --format {{.ContainerConfig.Labels}} jdob/python-web                                                                                                              1 ↵
+    map[Name:jdob/python-web Release:1 Vendor:Red Hat Version:1.0]
+
+..
+   Writing Deployment Templates
+   ----------------------------
+
+   Example
+   ~~~~~~~
+
+   .. _create_builder_image:
+
+   Creating a Builder Image
+   ------------------------
+
+   Example
+   ~~~~~~~
+
+   Liveness and Readiness
+   ----------------------
+
+   Example
+   ~~~~~~~
