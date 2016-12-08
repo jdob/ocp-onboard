@@ -298,7 +298,7 @@ Security Context Constraints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. warning::
-  Operations on secutiry context constraints can only be performed
+  Operations on security context constraints can only be performed
   by an admin user, including listing or describing existing SCCs.
 
 Security Context Constraints (SCC for short) define a set of access
