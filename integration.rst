@@ -281,6 +281,257 @@ below is truncated::
   $ docker inspect --format {{.ContainerConfig.Labels}} jdob/python-web                                                                                                              1 ↵
     map[Name:jdob/python-web Release:1 Vendor:Red Hat Version:1.0]
 
+Authenticating to the OpenShift APIs
+------------------------------------
+
+Service accounts may be used to authenticate against the OpenShift API without
+the need to use a regular user's credentials. This can be used for
+integrations that require extra information about the running system in which
+they are deployed, such as for discovery or monitoring purposes. Service
+accounts are identified by a username and its roles can be manipulated
+in the same way.
+
+In order to properly configure permissions for a service account, some
+understanding of the security role system is required.
+
+Security Context Constraints
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+  Operations on secutiry context constraints can only be performed
+  by an admin user, including listing or describing existing SCCs.
+
+Security Context Constraints (SCC for short) define a set of access
+permissions. Users and service accounts are added to SCCs to permit them
+the privileges defined by the SCC.
+
+A list of all defined SCCs can be retrieved using the ``get`` command and
+the ``scc`` resource type:
+
+.. code-block:: none
+
+   NAME               PRIV      CAPS      SELINUX     RUNASUSER          FSGROUP     SUPGROUP    PRIORITY   READONLYROOTFS   VOLUMES
+   anyuid             false     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    10         false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
+   hostaccess         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir hostPath persistentVolumeClaim secret]
+   hostmount-anyuid   false     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    <none>     false            [configMap downwardAPI emptyDir hostPath nfs persistentVolumeClaim secret]
+   hostnetwork        false     []        MustRunAs   MustRunAsRange     MustRunAs   MustRunAs   <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
+   nonroot            false     []        MustRunAs   MustRunAsNonRoot   RunAsAny    RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
+   privileged         true      []        RunAsAny    RunAsAny           RunAsAny    RunAsAny    <none>     false            [*]
+   restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
+
+Specific details are displayed using the ``describe`` command. Below is the
+output for the default ``restricted`` SCC:
+
+.. code-block:: none
+   :emphasize-lines: 4
+
+   Name:                        restricted
+   Priority:                    <none>
+   Access:
+     Users:                     <none>
+     Groups:                    system:authenticated
+   Settings:
+     Allow Privileged:              false
+     Default Add Capabilities:      <none>
+     Required Drop Capabilities:    KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
+     Allowed Capabilities:          <none>
+     Allowed Volume Types:          configMap,downwardAPI,emptyDir,persistentVolumeClaim,secret
+     Allow Host Network:            false
+     Allow Host Ports:              false
+     Allow Host PID:                false
+     Allow Host IPC:                false
+     Read Only Root Filesystem:     false
+     Run As User Strategy: MustRunAsRange
+       UID:                     <none>
+       UID Range Min:           <none>
+       UID Range Max:           <none>
+     SELinux Context Strategy: MustRunAs
+       User:                    <none>
+       Role:                    <none>
+       Type:                    <none>
+       Level:                   <none>
+     FSGroup Strategy: MustRunAs
+       Ranges:                  <none>
+     Supplemental Groups Strategy: RunAsAny
+       Ranges:                  <none>
+
+The SCC description includes information on what is permitted to users in the
+SCC. The ``Access`` section indicates which users are granted access to the
+SCC. Note that service accounts are treated as users in this context and
+will appear in this list as well.
+
+Users are granted access to an SCC through the admin policy (``adm policy``)
+command:
+
+.. code-block:: none
+
+   $ oc adm policy add-scc-to-user restricted onboard
+
+   $ oc describe scc restricted
+   Name:                    restricted
+   Priority:                <none>
+   Access:
+     Users:                 onboard
+     Groups:                system:authenticated
+   [output truncated]
+
+Service Accounts
+~~~~~~~~~~~~~~~~
+
+Service accounts exist within the scope of a particular project. Given that,
+cluster admin privileges are not required. Like other API objects, they are
+created and deleted through the ``create`` command:
+
+.. code-block:: none
+
+   $ oc create serviceaccount onboard-sa
+     serviceaccount "onboard-sa" created
+
+   $ oc get sa
+     NAME         SECRETS   AGE
+     builder      2         <invalid>
+     default      2         <invalid>
+     deployer     2         <invalid>
+     onboard-sa   2         <invalid>
+
+In the example above, the service account will be created in the currently
+active project. A different project may be specified using the ``-n`` flag.
+
+All projects are configured with three default service accounts:
+
+ * builder - Build pods use this SCC to push images into the internal
+   Docker registry and manipulate image streams.
+ * deployer - Used to view and edit replication controllers.
+ * default - Used to run all non-builder pods unless explicitly overridden.
+
+Service accounts can be added to SCCs in the same way as users with one
+notable exception. The username for the service account must be fully qualified
+as a service account and identifying the project in which it exists. The
+template for the user name is::
+
+  system:serviceaccount:<project>:<sa-name>
+
+For example, to add the previously created service account (assuming it was
+under the project name ``demo``):
+
+.. code-block:: none
+
+   $ oc adm policy add-scc-to-user restricted system:serviceaccount:demo:onboard-sa
+
+   $ oc describe scc restricted
+   Name:                    restricted
+   Priority:                <none>
+   Access:
+     Users:                 system:serviceaccount:demo:onboard-sa
+     Groups:                system:authenticated
+
+Authenticating as a Service Account
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are two ways to retrieve an API token for the service account.
+
+Externally Retrieving a Token
+.............................
+
+The ``describe`` command can be used to show the tokens that were created
+for a service account:
+
+.. code-block:: none
+
+   $ oc describe sa onboard-sa                                                                                                                                                        1 ↵
+   Name:		onboard-sa
+   Namespace:	guestbook
+   Labels:		<none>
+
+   Image pull secrets:	onboard-sa-dockercfg-myuk7
+
+   Mountable secrets: 	onboard-sa-token-tuwfj
+                        onboard-sa-dockercfg-myuk7
+
+   Tokens:            	onboard-sa-token-n79y5
+                        onboard-sa-token-tuwfj
+
+In this case, the list ``Tokens`` is of interest. The token itself can be
+retrieved through the ``describe`` command for the secret (the actual
+token value is truncated for brevity):
+
+.. code-block:: none
+
+   $ oc describe secret onboard-sa-token-n79y5                                                                                                                                        1 ↵
+   Name:		onboard-sa-token-n79y5
+   Namespace:	guestbook
+   Labels:		<none>
+   Annotations:	kubernetes.io/service-account.name=onboard-sa
+           kubernetes.io/service-account.uid=efe81599-bd6f-11e6-b14e-5254009f9a8b
+
+   Type:	kubernetes.io/service-account-token
+
+   Data
+   ====
+   ca.crt:		1066 bytes
+   namespace:	9 bytes
+   token:		eyJhbGciOi...
+
+Assuming the token value is saved to an environment variable named TOKEN,
+the list of users can be retrieved with the following ``curl`` command:
+
+.. code-block:: none
+   :emphasize-lines: 7, 8
+
+   $ TOKEN="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)"
+   $ curl -k "https://10.1.2.2:8443/oapi/v1/users/~" -H "Authorization: Bearer $TOKEN"                                                                                                 1 ↵
+     {
+      "kind": "User",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "system:serviceaccount:demo:onboard-sa",
+        "selfLink": "/oapi/v1/users/system:serviceaccount:demo:onboard-sa",
+        "creationTimestamp": null
+      },
+      "identities": null,
+      "groups": [
+        "system:serviceaccounts",
+        "system:serviceaccounts:demo"
+      ]
+    }
+
+From Within a Container
+.......................
+
+The API token for the service account associated with a deployment
+configuration is automatically injected into each container when it is
+created. The service account for a container can be changed from the default
+to an account with the proper permissions based on the need. The token
+is stored inside the container at::
+
+  /var/run/secrets/kubernetes.io/serviceaccount/token
+
+Using the same curl command as above:
+
+.. code-block:: none
+   :emphasize-lines: 7, 8
+
+   $ TOKEN="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)"
+   $ curl -k "https://10.1.2.2:8443/oapi/v1/users/~" -H "Authorization: Bearer $TOKEN"                                                                                                 1 ↵
+     {
+      "kind": "User",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "system:serviceaccount:demo:default",
+        "selfLink": "/oapi/v1/users/system:serviceaccount:demo:default",
+        "creationTimestamp": null
+      },
+      "identities": null,
+      "groups": [
+        "system:serviceaccounts",
+        "system:serviceaccounts:demo"
+      ]
+    }
+
+This output was taken from a container with no additional configuration,
+so the self reference refers to the project's ``default`` service account.
+
+
 ..
    Writing Deployment Templates
    ----------------------------
