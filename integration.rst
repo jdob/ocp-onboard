@@ -531,6 +531,45 @@ Using the same curl command as above:
 This output was taken from a container with no additional configuration,
 so the self reference refers to the project's ``default`` service account.
 
+Example
+.......
+
+An example PHP script using the container's token to access the API of the
+OpenShift instance in which it is deployed can be
+`found on GitHub <https://github.com/jdob-openshift/php-token-demo>`_.
+It can be built and deployed as a :ref:`source to image <build_s2i>`
+application.
+
+While it is not practical to repeat the code here, there are a few sections
+of note.
+
+.. code-block:: php
+
+   $token_file = "/var/run/secrets/kubernetes.io/serviceaccount/token";
+   $f = fopen($token_file, "r");
+   $token = fread($f, filesize($token_file));
+   fclose($f);
+   $auth = "Authorization: Bearer $token";
+
+The block above reads in the contents of the token file to use for
+authenticating against the API. The token is passed in the
+``Authentication: Bearer`` header.
+
+.. code-block:: php
+
+   $url = "https://openshift.default.svc.cluster.local/oapi/v1/users/~";
+
+The alias ``openshift.default.svc.cluster.local`` is made available to all
+containers by default and can be used to access the control plane for that
+container.
+
+.. code-block:: php
+
+   curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+The API is run on HTTPS. For simplicity and portability of this example,
+verification of the SSL certificate is disabled. Extra steps may be
+necessary to provide the proper CA for the container.
 
 ..
    Writing Deployment Templates
