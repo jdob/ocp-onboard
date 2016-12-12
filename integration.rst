@@ -255,10 +255,10 @@ built image.
 Partner container certification requires that images include the following
 labels:
 
- * Name
- * Vendor
- * Version
- * Release
+ * name
+ * vendor
+ * version
+ * release
 
 The container partner team provides a sample Dockerfile that can be used
 as a template for images suitable for certification. It can be found
@@ -270,16 +270,16 @@ Example
 The following snippet uses the Dockerfile ``LABEL`` directive to define
 the minimum required labels::
 
-  LABEL Name="jdob/python-web" \
-        Vendor="Red Hat" \
-        Version="1.0" \
-        Release="1"
+  LABEL name="jdob/python-web" \
+        vendor="Red Hat" \
+        version="1.0" \
+        release="1"
 
 The labels can be viewed using the ``docker inspect`` command (the output
 below is truncated::
 
   $ docker inspect --format {{.ContainerConfig.Labels}} jdob/python-web                                                                                                              1 ↵
-    map[Name:jdob/python-web Release:1 Vendor:Red Hat Version:1.0]
+    map[name:jdob/python-web release:1 vendor:Red Hat version:1.0]
 
 Authenticating to the OpenShift APIs
 ------------------------------------
