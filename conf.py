@@ -49,7 +49,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Partner Onboarding Guide'
-copyright = u'2016, Red Hat'
+copyright = u'2016-2017, Red Hat'
 author = u'Jay Dobies'
 
 # The version info for the project you're documenting, acts as replacement for
