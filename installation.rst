@@ -2,17 +2,27 @@ Installation
 ============
 
 While there are a number of ways to `install the upstream OpenShift Origin <https://install.openshift.com/>`_
-releases, the recommended way to install the Red Hat OpenShift Container
-Platform is through the Red Hat Container Development Kit (CDK).
+releases, it is recommended that partners test their integrations against
+an enterprise installation of OpenShift Container Platform. There are two
+suggested approaches based on the desired deployment.
+
+* :ref:`install_cdk`
+* :ref:`install_oc`
+
+In either case, developers can access the Red Hat bits via the no-cost
+Red Hat Enterprise Linux Developer Suite subscription, accessed through
+http://developers.redhat.com/.
+
+.. _install_cdk:
+
+Installation in a VM - CDK
+--------------------------
 
 The CDK is a pre-built environment for running and developing containers using
 Red Hat OpenShift. It runs as a virtual machine and supports a number of
 different virtualization providers and host operating systems.
 
-Developers can get the Red Hat Container Development Kit via the no-cost
-Red Hat Enterprise Linux Developer Suite subscription, accessed through
-http://developers.redhat.com/. Once registered, there are two pieces
-that must be downloaded, with both being found at
+There are two pieces that must be downloaded, with both being found at
 http://developers.redhat.com/products/cdk/download/.
 
 * The Red Hat Container Tools are used in conjunction with
@@ -25,6 +35,53 @@ http://developers.redhat.com/products/cdk/download/.
   and HyperV.
 
 Details on the CDK installation process can be found on the
-`Red Hat Customer Portal <https://access.redhat.com/documentation/en/red-hat-container-development-kit/2.2/paged/installation-guide>`_.
+`Red Hat Customer Portal <https://access.redhat.com/documentation/en/red-hat-container-development-kit/latest/paged/installation-guide>`_.
 Additional information on interacting with the CDK VMs can be found at
 the `Vagrant Documentation <https://www.vagrantup.com/docs/>`_.
+
+.. _install_oc:
+
+Installation in Docker - OpenShift Client
+-----------------------------------------
+
+If a VM is not feasible or desired, OpenShift can be run directly inside of
+Docker on the host machine. There are two steps required:
+
+* Download the OpenShift client from the
+  `Red Hat Customer Portal product page <https://access.redhat.com/downloads/content/290>`_.
+  Builds are provided for Linux, macOS, and Windows. The client is a
+  single executable named ``oc`` and can be used for both
+  setting up the cluster as well as all further command line interaction with
+  the running server.
+* Run the cluster creation command, specifying the appropriate Red Hat hosted
+  image: ``oc cluster up --image=registry.access.redhat.com/openshift3/ose``
+
+Once the oc command finishes, information will be provided on how to access
+the server. For example:
+
+.. code-block:: none
+
+ -- Server Information ...
+    OpenShift server started.
+    The server is accessible via web console at:
+        https://159.203.119.95:8443
+
+    You are logged in as:
+        User:     developer
+        Password: developer
+
+    To login as administrator:
+        oc login -u system:admin
+
+As expected, running ``docker ps`` shows a number of deployed containers, all
+of which service the running installation:
+
+.. code-block:: none
+
+ $ docker ps
+ CONTAINER ID        IMAGE                                                                 COMMAND                  CREATED             STATUS              PORTS               NAMES
+ 06576c15b6a3        registry.access.redhat.com/openshift3/ose-docker-registry:v3.4.0.40   "/bin/sh -c 'DOCKER_R"   9 minutes ago       Up 9 minutes                            k8s_registry.a8db0f16_docker-registry-1-rnk4b_default_5644c474-e7e4-11e6-a0c8-362219689e3e_ea45467b
+ 7a4093685a82        registry.access.redhat.com/openshift3/ose-haproxy-router:v3.4.0.40    "/usr/bin/openshift-r"   9 minutes ago       Up 9 minutes                            k8s_router.a21b2f8_router-1-8tg8h_default_58b1ede7-e7e4-11e6-a0c8-362219689e3e_da907d85
+ 9b13ed6c7d2d        registry.access.redhat.com/openshift3/ose-pod:v3.4.0.40               "/pod"                   9 minutes ago       Up 9 minutes                            k8s_POD.8f3ae681_router-1-8tg8h_default_58b1ede7-e7e4-11e6-a0c8-362219689e3e_279eb0a6
+ 7850f7da7bd3        registry.access.redhat.com/openshift3/ose-pod:v3.4.0.40               "/pod"                   9 minutes ago       Up 9 minutes                            k8s_POD.b6fc0873_docker-registry-1-rnk4b_default_5644c474-e7e4-11e6-a0c8-362219689e3e_034c5b1d
+ 5d6c6d7ed3b0        registry.access.redhat.com/openshift3/ose:v3.4.0.40                   "/usr/bin/openshift s"   10 minutes ago      Up 10 minutes                           origin
