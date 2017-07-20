@@ -1,5 +1,0 @@
-.. note::
-  By default, the newly deployed application will not be accessible. A
-  :term:`route` is needed to expose the service to the outside world. See
-  the :ref:`routes` section for more information on how to expose and
-  access a service.
