@@ -1,0 +1,7 @@
+[NOTE]
+====
+By default, the newly deployed application will not be accessible. A
+<<terminology#route,route>> is needed to expose the service to the outside
+world. See the <<basic-usage#routes,routes>> section for more information
+on how to expose and access a service.
+====

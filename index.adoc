@@ -1,0 +1,47 @@
+= OpenShift Partner Getting Started Guide
+:toc: left
+:toclevels: 2
+:icons: font
+
+This guide is intended to help developers and integrators get started using
+and developing for the OpenShift Container Platform.
+
+== Quick Start
+
+<<terminology,Terminology>> - If you're new to OpenShift, start here to
+get acquainted with the common terms.
+
+<<installation,Installation>> - If you don't have access to a running
+installation or want to set up a local environment, check out the installation
+guide for more information on installing the Red Hat Container
+Development Kit (CDK).
+
+<<deployment,Deployment>> - If you already have a container deployed to a
+public registry (such as Docker Hub) or a Dockerfile, view the container
+deployment guide. This guide also covers having OpenShift perform the image
+build steps for you against your source code repository.
+
+<<basic-usage,Basic Usage>> - Once you've got an application deployed,
+there are some basic commands that can be run to understand all of its pieces
+and how to interact with it.
+
+<<integration,Integration>> - If you're just beginning to port an
+application to be run on containers, or beginning new development, the
+integration guide can provide more information on how to use OpenShift in an
+active development environment.
+
+include::installation.adoc[]
+
+include::deployment.adoc[]
+
+include::basic-usage.adoc[]
+
+include::storage.adoc[]
+
+include::integration.adoc[]
+ 
+include::anatomy.adoc[]
+
+include::terminology.adoc[]
+
+include::involved.adoc[]
