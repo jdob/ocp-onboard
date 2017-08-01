@@ -1,7 +1,7 @@
 [[terminology]]
 == Terminology
 
-[[build-configuration]]
+[[bc]]
 === build configuration
 A build configuration describes a single build definition and a set of
 triggers for when a new build should be created.

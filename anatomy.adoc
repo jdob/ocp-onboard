@@ -4,8 +4,8 @@ include::includes/header.adoc[]
 
 [NOTE]
 ====
-More information on the ``get`` and ``describe`` commands that are used in
-this guide can be found in the :ref:`resource_query_commands` section.
+More information on the `get` and `describe` commands that are used in
+this guide can be found in the <<basic-usage#resource-query-commands>> section.
 ====
 
 When applications are deployed, either directly from an image or built using
@@ -19,7 +19,7 @@ will create one. The image stream is used to provide images when creating new
 containers. Additionally, triggers can be created to automatically react to changes
 in an image stream contents and roll out updated pods.
 
-The type name ``imagestreams`` (or ``is`` for short) is used with CLI query
+The type name `imagestreams` (or `is` for short) is used with CLI query
 commands:
 
 [source,bash,options="nowrap"]
@@ -29,9 +29,9 @@ NAME         DOCKER REPO                                TAGS      UPDATED
 python-web   172.30.53.244:5000/python-web/python-web   latest    50 minutes ago 
 ----
 
-In the output above, the ``172.30.53.244`` address corresponds to the internal
+In the output above, the `172.30.53.244` address corresponds to the internal
 Docker registry created and managed by the OpenShift installation. It runs
-in a container under the ``default`` project, which can be accessed by a user
+in a container under the `default` project, which can be accessed by a user
 with cluster admin privileges:
 
 [source,bash,options="nowrap"]
@@ -47,7 +47,7 @@ router            172.30.198.186   <none>        80/TCP,443/TCP,1936/TCP   20d
 ----
 
 More information about the created input stream can be viewed using the
-``describe`` command:
+`describe` command:
 
 [source,bash,options="nowrap"]
 ----
@@ -75,7 +75,7 @@ A <<terminology#rc,replication controller>> is created when an application is
 deployed and is used to control the number of running pods. Each application
 deployment gets its own replication controller.
 
-The resource type ``replicationcontrollers`` (or ``rc`` for short) is used
+The resource type `replicationcontrollers` (or `rc` for short) is used
 with the CLI query commands:
 
 [source,bash,options="nowrap"]
@@ -85,7 +85,7 @@ NAME           DESIRED   CURRENT   AGE
 python-web-1   1         1         1h
 ----
 
-The ``describe`` command displays extra information, including details on the
+The `describe` command displays extra information, including details on the
 image used to provision and details on the running and desired pods:
 
 [source,bash,options="nowrap"]
@@ -108,7 +108,7 @@ No events.
 The next level up is the <<terminology#dc,deployment configuration>> which describes
 when and how deployments of the application will be run.
 
-The resource type ``deploymentconfigs`` (or ``dc`` for short) is used with
+The resource type `deploymentconfigs` (or `dc` for short) is used with
 the CLI query commands:
 
 [source,bash,options="nowrap"]
@@ -120,7 +120,7 @@ python-web   1          1         1         config,image(python-web:latest)
 
 Information on the deployment's triggers and update strategy, as well as
 details on deployments done using the configuration, are displayed by the
-``describe`` command:
+`describe` command:
 
 [source,bash,options="nowrap"]
 ----
@@ -164,7 +164,7 @@ The last layer of interest is the created <<terminology#service,service>>. The
 service acts as the entry point into the running application, taking care of
 distributing requests to the appropriate pod.
 
-The resource type ``services`` is used with the CLI query commands:
+The resource type `services` is used with the CLI query commands:
 
 [source,bash,options="nowrap"]
 ----

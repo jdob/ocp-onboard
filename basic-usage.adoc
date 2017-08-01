@@ -11,11 +11,11 @@ in the OpenShift installation.
 [[get]]
 ==== Get
 
-The ``get`` command displays a list of a particular resource type, along with
+The `get` command displays a list of a particular resource type, along with
 some basic summary information on each entry. The desired resource type is
-specified as an argument to the ``get`` call and the output will vary based
+specified as an argument to the `get` call and the output will vary based
 on the type of resource being queried. The full list of resource types can
-be found by calling ``oc get`` with no arguments.
+be found by calling `oc get` with no arguments.
 
 For example, retrieving the list of <<terminology#image-stream,image stream>>
 resources will display tagging and repository information:
@@ -40,7 +40,7 @@ python-web   172.30.167.215   <none>        8080/TCP   2h
 [[describe]]
 ==== Describe
 
-The ``describe`` command is used to retrieve specific details on a particular
+The `describe` command is used to retrieve specific details on a particular
 resource. In addition to the resource's name, the type of resource must also
 be provided (in many cases, resources of different types will share the same
 name to ease understanding their relationship). If the resource name is
@@ -70,7 +70,7 @@ tagged from jdob/python-web
     2 hours ago
 ----
 
-As with ``get``, the output will vary based on the type of resource being
+As with `get`, the output will vary based on the type of resource being
 described.
 
 [[routes]]
@@ -96,8 +96,8 @@ https://docs.openshift.org/latest/install_config/router/index.html#install-confi
 Routes may optionally be configured with TLS credentials for secure
 communications.
 
-Routes are created through the ``expose`` command. Arguments are supported for
-customizing the route (the most common being ``--hostname`` when using an
+Routes are created through the `expose` command. Arguments are supported for
+customizing the route (the most common being `--hostname` when using an
 existing DNS server), but for development purposes, the defaults are usually
 sufficient:
 
@@ -139,7 +139,7 @@ Hello World
 ----
 
 More information on routes can be found in the
-https://docs.openshift.org/latest/architecture/core_concepts/routes.html>[corresponding section]
+https://docs.openshift.org/latest/architecture/core_concepts/routes.html[corresponding section]
 of the OpenShift documentation.
 
 [[persistent-storage]]
@@ -147,7 +147,7 @@ of the OpenShift documentation.
 
 Along with routes, a common configuration made to pods is the addition of
 persistent storage volumes. As this is a lengthy topic, it can be found in
-the :doc:`storage` section of this guide.
+the <<storage>> section of this guide.
 
 [[remote-shell]]
 === Remote Shell into a Container
@@ -157,8 +157,8 @@ open a terminal into a running container. Both the web UI and command line
 interface support this directly; there is no need to look up IP addresses
 or manually deal with SSH keys.
 
-The ``rsh`` command is used to connect to a specific pod by its name. The
-pod names can be retrieved using the ``get`` command under the ``pods``
+The `rsh` command is used to connect to a specific pod by its name. The
+pod names can be retrieved using the `get` command under the `pods`
 resource type:
 
 [source,bash,options="nowrap"]
@@ -186,14 +186,14 @@ pod restarts or scaling operations. This functionality is primarily intended
 for debugging or development situations.
 ====
 
-Apropos of its name, the ``rsync`` command will attempt to use rsync to
+Apropos of its name, the `rsync` command will attempt to use rsync to
 transmit files if the service is available on the destination container. If
 it is not, OpenShift will fall back to sending a tarfile with the contents.
 Keep in mind that the normal restrictions when using tar over rsync will
 be present; the destination directory must exist and the entire contents will
 be transmitted rather than only sending changed files.
 
-The ``rsync`` command works similar to the tranditional rsync command,
+The `rsync` command works similar to the tranditional rsync command,
 accepting the source and destination directories. Instead of specifying a
 hostname or IP address, the pod name is used in the destination:
 

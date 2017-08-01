@@ -3,7 +3,7 @@
 include::includes/header.adoc[]
 
 OpenShift can deploy existing code in a number of ways. Pre-built containers
-stored in a Docker registry, such as https://hub.docker.com/>[Docker Hub]
+stored in a Docker registry, such as https://hub.docker.com/[Docker Hub]
 can be downloaded and deployed directly to OpenShift. OpenShift can also
 build images from source code in a https://git-scm.com/[git] repository,
 regardless of whether or not a Dockerfile is present.
@@ -49,7 +49,7 @@ If a Dockerfile is present, OpenShift will perform the following steps:
   be redeployed with the new image.
 * The first build of the created configuration is started.
 * The remainder of the necessary components, as described in
-  <<anatomy.adoc,anatomy>> are created, including the replication controller
+  <<anatomy>> are created, including the replication controller
   and service.
 
 ==== Example
@@ -66,7 +66,7 @@ $ oc new-app https://github.com/jdob-openshift/python-web
 Of particular interest in this example is the created build configuration.
 The list of build configurations can be found using the commands in the
 <<basic-usage#resource-query-commands,query commands>> section and specifying
-the ``buildconfig`` (or ``bc`` for short) type:
+the `buildconfig` (or `bc` for short) type:
 
 [source,bash,options="nowrap"]
 ----
@@ -76,7 +76,7 @@ python-web         Docker    Git       1
 ----
 
 Specific details about the build configuration are retrieved using the
-``describe`` command and the name of the configuration itself:
+`describe` command and the name of the configuration itself:
 
 [source,bash,options="nowrap"]
 ----
@@ -88,10 +88,10 @@ Labels: app=python-web
 Annotations: openshift.io/generated-by=OpenShiftNewApp
 Latest Version: 1
 
-Strategy: Docker
-URL: https://github.com/jdob-openshift/python-web <1>
-From Image: ImageStreamTag openshift/python:latest <2>
-Output to: ImageStreamTag python-web:latest <3>
+Strategy: Docker <1>
+URL: https://github.com/jdob-openshift/python-web <2>
+From Image: ImageStreamTag openshift/python:latest <3>
+Output to: ImageStreamTag python-web:latest
 
 Build Run Policy: Serial
 Triggered by: Config, ImageChange
@@ -101,10 +101,10 @@ Webhook Generic:
     URL: https://localhost:8443/oapi/v1/namespaces/dockerfile-build/buildconfigs/python-web/webhooks/B1KFkXvJmi_5KycoFYkw/generic
     AllowEnv:	false
 ----
-<1> The `URL` value corresponds to the git repository where the source is found.
-<2> The strategy is set to Docker, indicating that the image should be built
+<1> The strategy is set to `Docker`, indicating that the image should be built
     using a Dockerfile found in the repository. For comparison, see the
-    :ref:`build_s2i` section.
+    <<deploy-source-to-image>> section.
+<2> The `URL` value corresponds to the git repository where the source is found.
 <3> The `From Image` is the base image for the build and is derived directly
     from the Dockerfile.
 
@@ -195,10 +195,10 @@ Labels: app=python-web-source
 Annotations: openshift.io/generated-by=OpenShiftNewApp
 Latest Version: 5
 
-Strategy: Source
-URL: https://github.com/jdob-openshift/python-web-source <1>
-From Image: ImageStreamTag openshift/python:3.4 <2>
-Output to: ImageStreamTag python-web-source:latest <3>
+Strategy: Source <1>
+URL: https://github.com/jdob-openshift/python-web-source <2>
+From Image: ImageStreamTag openshift/python:3.4 <3>
+Output to: ImageStreamTag python-web-source:latest
 
 Build Run Policy: Serial
 Triggered by: Config, ImageChange
@@ -208,9 +208,9 @@ Webhook Generic:
     URL: https://localhost:8443/oapi/v1/namespaces/web2/buildconfigs/python-web-source/webhooks/R0U9P0QgPy3ncXMQphnC/generic
     AllowEnv: false
 ----
-<1> The `URL` value corresponds to the git repository where the source is found.
-<2> The strategy is set to Source, indicating that the image should be built
+<1> The strategy is set to `Source`, indicating that the image should be built
     against a builder image.
+<2> The `URL` value corresponds to the git repository where the source is found.
 <3> The `From Image` is the builder image for the build. This value can be
     derived automatically by OpenShift or, in this example, explicitly set
     when the application is created.
@@ -228,8 +228,8 @@ are automatically configured with a route by default.
 [[next-steps]]
 === Next Steps
 
-Now that an application is deployed, see the <<anatomy.adoc,anatomy>> section
+Now that an application is deployed, see the <<anatomy>> section
 guide for more information on the different resources that were created, or the
-<<basic-usage.adoc,basic usage>> guide for other ways to interact with the newly
+<<basic-usage>> guide for other ways to interact with the newly
 deployed application. Information on enhancing container images to utilize
-OpenShift's features can be found in the <<integration.adoc,integration>> guide.
+OpenShift's features can be found in the <<integration>> guide.

@@ -11,7 +11,7 @@ in OpenShift:
   storage (NFS, GlusterFS, AWS Elastic Block Stores, etc.)
 * A `persistent volume claim` is the assignment and usage of a persistent
   volume by a user. A claim is made within the scope of a project and can
-  be attached to a :term:`deployment configuration` (in practice, this
+  be attached to a <<terminology#dc>> (in practice, this
   effectively attaches it to all of the pods deployed by that configuration).
 
 The creation of the persistent volumes is outside the scope of this guide
@@ -113,11 +113,11 @@ deploymentconfigs/python-web
     many other commands in the client, two pieces of information are needed:
     the resource type ("dc" is shorthand for "deployment configuration")
     and the name of the resource. Alternatively, they could be joined with
-    a front slash into a single term (``dc/python-web``).
+    a front slash into a single term (`dc/python-web`).
 <2> The volume action being performed. In this case, a volume is
-    being added to the configuration. By comparison, ``--remove`` is used to
+    being added to the configuration. By comparison, `--remove` is used to
     detach a volume.
-<3> While the requests is for a volume `of at least 512MB`. The actual
+<3> While the requests is for a volume "of at least 512MB". The actual
     allocated volume may be larger as OpenShift will fulfill the claim with
     the best fit available.
 <4> Dictates where in the pod(s) to mount the storage volume.

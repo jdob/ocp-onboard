@@ -2,7 +2,7 @@
 == Integrating with OpenShift
 include::includes/header.adoc[]
 
-While it is simple to <<deployment.adoc,deploy an image on OpenShift>>,
+While it is simple to <<deployment,deploy an image on OpenShift>>,
 there are certain guidelines and integration techniques that should be
 adhered to.
 
@@ -186,7 +186,7 @@ Goodbye World
 One of the more common obstacles encountered with creating new images
 revolves around the user running the container process. By default, Docker
 containers are run as root. This can become a
-http://blog.dscpl.com.au/2015/12/don-run-as-root-inside-of-docker.html>[security issue]
+http://blog.dscpl.com.au/2015/12/don-run-as-root-inside-of-docker.html[security issue]
 as any process that breaks out of the container will retain the same privileges
 on the host machine; root in a container would have access to root on the host.
 
@@ -199,7 +199,7 @@ provided by OpenShift and, while not difficult, must be acknowledged when
 creating images.
 
 Since OpenShift is generating a random UID, the solution isn't as simple as
-http://blog.dscpl.com.au/2015/12/overriding-user-docker-containers-run-as.html>[creating and using a user]
+http://blog.dscpl.com.au/2015/12/overriding-user-docker-containers-run-as.html[creating and using a user]
 (by its name) within the container. There are potential security issues
 where a created user can still give itself root privileges. The use of a
 random ID, specified by OpenShift, also supports added security for
@@ -210,7 +210,7 @@ In short, since OpenShift runs containers as a randomized, non-privileged user,
 the image must be constructed with those limitations in mind.
 
 The common solution is to make the necessary files and directories
-http://blog.dscpl.com.au/2015/12/random-user-ids-when-running-docker.html>[writable by the root group].
+http://blog.dscpl.com.au/2015/12/random-user-ids-when-running-docker.html[writable by the root group].
 
 ==== Example
 
@@ -273,7 +273,7 @@ labels:
 The container partner team provides a sample Dockerfile that can be used
 as a template for images suitable for certification. It can be found
 on
-https://github.com/RHsyseng/container-rhel-examples/blob/master/starter/Dockerfile>[GitHub].
+https://github.com/RHsyseng/container-rhel-examples/blob/master/starter/Dockerfile[GitHub].
 
 ==== Example
 
@@ -294,7 +294,7 @@ below is truncated:
 [source,bash,options="nowrap"]
 ----
 $ docker inspect --format {{.ContainerConfig.Labels}} jdob/python-web
-  map[name:jdob/python-web release:1 vendor:Red Hat version:1.0]
+map[name:jdob/python-web release:1 vendor:Red Hat version:1.0]
 ----
 
 [[api-auth]]
@@ -405,14 +405,14 @@ created and deleted through the `create` command:
 [source,bash,options="nowrap"]
 ----
 $ oc create serviceaccount onboard-sa
-    serviceaccount "onboard-sa" created
+serviceaccount "onboard-sa" created
 
 $ oc get sa
-    NAME         SECRETS   AGE
-    builder      2         <invalid>
-    default      2         <invalid>
-    deployer     2         <invalid>
-    onboard-sa   2         <invalid>
+NAME         SECRETS   AGE
+builder      2         <invalid>
+default      2         <invalid>
+deployer     2         <invalid>
+onboard-sa   2         <invalid>
 ----
 
 In the example above, the service account will be created in the currently
@@ -497,7 +497,7 @@ namespace:	9 bytes
 token:		eyJhbGciOi...
 ----
 
-Assuming the token value is saved to an environment variable named TOKEN,
+Assuming the token value is saved to an environment variable named `TOKEN`,
 the list of users can be retrieved with the following `curl` command:
 
 [source,bash,options="nowrap"]
@@ -562,7 +562,7 @@ so the self reference refers to the project's `default` service account.
 
 An example PHP script using the container's token to access the API of the
 OpenShift instance in which it is deployed can be
-https://github.com/jdob-openshift/php-token-demo>[found on GitHub].
+https://github.com/jdob-openshift/php-token-demo[found on GitHub].
 It can be built and deployed as a
 <<deployment#source-to-image,source to image>> application.
 

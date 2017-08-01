@@ -3,7 +3,7 @@
 :toclevels: 2
 :icons: font
 
-This guide is intended to help developers and integrators get started using
+This guide is intended to help partners get started using
 and developing for the OpenShift Container Platform.
 
 == Quick Start
