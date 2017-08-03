@@ -1,0 +1,34 @@
+[[primed]]
+=== Primed
+include::includes/header.adoc[]
+
+
+Red Hat OpenShift Primed is a technical readiness designation that acknowledges 
+the first steps of an ISV's technology working with OpenShift by providing the ISV a 
+designated logo and awareness through OpenShift online properties such as
+https://hub.openshift.com/[Hub] and https://commons.openshift.org/[OpenShift Commons]. 
+To earn this designation, ISVs must demonstrate an initial commitment to OpenShift.
+
+To sign up for the program, visit https://www.openshift.com/primed.
+
+
+. Click on Apply Now.
+. Sign in with GitHub to get access to the Primed application.
++
+image::images/sign_in.png[]
+
+. The Primed application:
++
+[horizontal]
+*_Name_*:: Name of Organization
+
+*_Summary_*:: Information about OpenShift integration
++
+*_More Information URL_*:: Link to organization page
++
+*_Evidence of integration_*:: This needs to demonstrate the integration - blog entries, how-to guides, 
+source code, or videos will satisfy the requirement.
++
+*_Primed For_*:: OpenShift Offering
++
+*_Version Number_*:: OpenShift Version Number
