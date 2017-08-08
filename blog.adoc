@@ -2,6 +2,6 @@
 === OpenShift Blog
 
 The https://blog.openshift.com/[OpenShift Blog] hosts posts on a
-  variety of topics. In particular, the
-  https://blog.openshift.com/category/openshift-ecosystem/[ecosystem] tag
-  highlights posts written by ISV teams to showcase their integrations.
+variety of topics. In particular, the
+https://blog.openshift.com/category/openshift-ecosystem/[ecosystem] tag
+highlights posts written by ISV teams to showcase their integrations.
