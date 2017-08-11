@@ -15,6 +15,25 @@ so rather than repeat that information here, it's recommended to be familiar
 with the practices in that document. Points of particular interest will be
 included in the rest of this guide.
 
+[[recommended-practices]]
+=== Recommended Practices
+
+There are some recommended practices for your images to ensure full compatibility with Red Hat Products. 
+
+* Containers should not run as root.
+** Containers running as root represent a security vulnerability as a process that breaks out of the container will retain root privileges on the host system.
+** Containers run as root by default - More information on users can be found <<users,here>>.
+* Containers should not request host-level privileges.
+** Containers requiring host-level privileges may not function correctly in all environments - namely those that the application deployer does not have full control over the host system.
+** OpenShift Online and OpenShift Dedicated do not support privileged containers.
+* Containers should use a Red Hat provided base image. They should also not modify content provided by Red Hat packages or layers.
+** The following dockerfile snippet shows a way to to build an image on rhel.
++
+----
+FROM registry.access.redhat.com/rhel7
+----
+** This ensures that the application's runtime dependencies are fully supported by Red Hat.
+
 [[env-var]]
 === Environment Variables
 
@@ -34,7 +53,7 @@ scaling up and down).
 
 This paradigm is used both for images created for deployment as well as those
 intended to be used as builder images with
-<<deployment.adoc#source-to-image,source to image>>. For example,
+<<deployment.adoc#source-to-image, source to image>>. For example,
 the Python builder image will, by default, attempt to run a file named
 `app.py`. If an application cannot be modified to use this naming scheme,
 the environment variable `APP_FILE` can be specified to indicate a new
