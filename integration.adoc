@@ -10,7 +10,7 @@ adhered to.
 === Creating Images
 
 The OpenShift documentation contains a section on
-https://docs.openshift.com/container-platform/3.3/creating_images/guidelines.html[image creation guidelines],
+https://docs.openshift.com/container-platform/latest/creating_images/guidelines.html[image creation guidelines],
 so rather than repeat that information here, it's recommended to be familiar
 with the practices in that document. Points of particular interest will be
 included in the rest of this guide.
