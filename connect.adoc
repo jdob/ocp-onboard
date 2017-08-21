@@ -1,0 +1,11 @@
+[[red-hat-connect]]
+=== Red Hat Connect
+include::includes/header.adoc[]
+
+A natural progression from the Primed program is https://connect.redhat.com/[Red Hat Connect for Technical Partners]. 
+
+The program is designed to assist companies who are actively seeking to develop, test, certify and support their products and solutions with the Red Hat portfolio.
+Participants in the program will gain access to a strong ecosystem of companies that are building software, hardware and cloud-based solutions for enterprise customers across the world.
+
+Partners developing solutions for OpenShift should apply for access to the https://connect.redhat.com/zones/containers[containers zone]. All members of the program are required certify their images 
+to gain access to the ecosystem.

@@ -11,4 +11,6 @@ include::commons.adoc[]
 
 include::primed.adoc[]
 
+include::connect.adoc[]
+
 include::certification.adoc[]
