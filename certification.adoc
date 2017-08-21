@@ -9,7 +9,7 @@ built and packaged according to Red Hat's enterprise standards.
 
 In addition to the practices outlined under <<integration#recommended-practices, recommended practices>>, software vendors should ensure that their containers meet the following requirements.
 
-* Images should contain a directory named /licenses that holds all relevant licensing information.
+* Images should contain a directory named `/licenses` that holds all relevant licensing information.
 ** End users should be aware of the terms and conditions applicable to the image.
 * Image dockerfiles should contain the following labels:
 ** name
