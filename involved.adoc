@@ -10,3 +10,5 @@ include::blog.adoc[]
 include::commons.adoc[]
 
 include::primed.adoc[]
+
+include::certification.adoc[]
