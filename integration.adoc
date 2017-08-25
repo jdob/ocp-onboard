@@ -646,7 +646,7 @@ OpenShift networking requires the following items to be kept in mind when writin
 [red]#Red# items are not necessary for a functional OpenShift cluster, but some things will need to be worked around for the administrator's benefit.
 
 . A plugin can follow the NetworkPolicy objects from Kubernetes and implement the user/admin 
-intent on multi-tenancy (see https://github.com/kubernetes/kubernetes/blob/master/docs/proposals/network-policy.md[here]). 
+intent on multi-tenancy. 
 Alternatively, plugins can ignore multi-tenancy completely or implement a model where multi-tenancy is based on projects (i.e. Kubernetes namespaces), where:
 ** Each namespace should be treated like a tenant where its pods and services are isolated from another project's pods/services
 ** [red]#Support exists for operations like merge/join networks even when they belong to different namespaces#
@@ -658,9 +658,9 @@ private load balancer is one that is launched as a pod by a particular namespace
 Please note that iptables based kube-proxy will be enabled by default in OpenShift. This will have to be overridden specially if the plugin 
 wants a different behaviour.#
 . Access to external networks by pods whether through NAT or direct access.
-. Build containers - as part of the developer workflow, OpenShift builds docker images. The build is run through 'docker build' api. 
+. OpenShift builds docker images as part of the developer workflow. The build is run through 'docker build' api. 
 This means that docker's default networking will be invoked for this container (CNI/kube-plugin will not run as this is not a pod). 
 These containers still need a network and access to external network (e.g. the internet e.g.).
 . [red]#Respect the `PodSecurityContext::HostNetwork=true` for infra pods. Or provide an externally routable IP address to the pod. This is 
 used for the load balancer pods which are the entry point for all external traffic funneling into the cluster.#
-** Note that the HostPort<->ContainerPort mapping will not be available by default if the CNI plugin is enabled (as the default docker networking is turned off). The plugin will have to implement this functionality by itself.
+** Note that the HostPort<-->ContainerPort mapping will not be available by default if the CNI plugin is enabled (as the default docker networking is turned off). The plugin will have to implement this functionality by itself.
