@@ -1,8 +1,0 @@
-[[commons]]
-=== Commons
-include::includes/header.adoc[]
-
-https://commons.openshift.org/[OpenShift Commons] provides a community for partners, users, customers, and contributors to build connections 
-and share best practices, facilitating collaboration and awareness of project involvement with OpenShift.
-Additionally, regular https://commons.openshift.org/briefings.html[briefings] are hosted and allow for deeper dives
-into various topics.
