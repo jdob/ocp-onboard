@@ -2,16 +2,17 @@
 == Installation
 include::includes/header.adoc[]
 
-While there are a number of ways to 
+While there are a number of ways to
 https://install.openshift.com/[install the upstream OpenShift Origin]
 releases, it is recommended that partners test their integrations against
-an enterprise installation of OpenShift Container Platform. There are two
+an enterprise installation of OpenShift Container Platform. There are multiple
 suggested approaches based on the desired deployment.
 
 * <<install-cdk>>
 * <<install-oc>>
+* <<install-ansible>>
 
-In either case, developers can access the Red Hat bits via the no-cost
+In all cases, developers can access the Red Hat bits via the no-cost
 Red Hat Enterprise Linux Developer Suite subscription, accessed through
 http://developers.redhat.com/.
 
@@ -56,7 +57,7 @@ Docker on the host machine. There are two steps required:
   image:
 
 [source,bash,options="nowrap"]
-----  
+----
 $ oc cluster up --image=registry.access.redhat.com/openshift3/ose
 ----
 
@@ -91,3 +92,169 @@ CONTAINER ID        IMAGE                                                       
 7850f7da7bd3        registry.access.redhat.com/openshift3/ose-pod:v3.4.0.40               "/pod"                   9 minutes ago       Up 9 minutes                            k8s_POD.b6fc0873_docker-registry-1-rnk4b_default_5644c474-e7e4-11e6-a0c8-362219689e3e_034c5b1d
 5d6c6d7ed3b0        registry.access.redhat.com/openshift3/ose:v3.4.0.40                   "/usr/bin/openshift s"   10 minutes ago      Up 10 minutes                           origin
 ----
+
+[[install-ansible]]
+=== Using the OpenShift Ansible Installer
+
+A significantly more customized installation can be achieved through the
+https://github.com/openshift/openshift-ansible.git[OpenShift Ansible Installer].
+The full instructions on using this method can be found in the
+https://docs.openshift.com/container-platform/latest/install_config/install/advanced_install.html[Advanced Installation]
+section of the OpenShift documentation.
+
+==== Example
+
+The OpenShift Ansible Installer trades simplicity for flexibility. With such a
+wide array of options, it can be difficult to determine a starting point. The
+following example illustrates the steps necessary to install a multi-node
+cluster on top of a number of CentOS 7 VMs.
+
+. Install the desired number of virtual machines. Guidelines on the recommended
+sizes can be found in the https://docs.openshift.com/container-platform/latest/install_config/install/prerequisites.html[Prerequisites]
+section of the OpenShift documentation.
+
+. Enable the EPEL repository on each VM:
++
+[source,bash,options="nowrap"]
+----
+yum -y install epel-release
+----
+
+. Optional but recommended: Update the newly installed system:
++
+[source,bash,options="nowrap"]
+----
+yum update -y
+----
+
+. Clone the ansible installer repository:
++
+[source,bash,options="nowrap"]
+----
+git clone https://github.com/openshift/openshift-ansible.git
+----
+
+. Ensure each VM can resolve the DNS names for all nodes in the cluster.
+While this can be achieved through `/etc/hosts`, it will be difficult when
+it comes time to create routes to each application. Having access to a
+DNS server will make things easier in the long run.
+
+. Ensure the VM running the installer can SSH into each node using key
+access. Unless otherwise configured, the installer will attempt to SSH
+into each node as `root`.
++
+IMPORTANT: If the installer is run on one of the nodes that will be part of
+the cluster, it must be able to successfully SSH into itself as well.
+
+. Create an inventory file to drive the installation. The inventory file
+will indicate the VMs to include and what role they will serve in the
+cluster (e.g. master, application node, etc.). The inventory file also
+contains other configuration related to how the cluster will function.
+More information on this file can be found in the <<example-inventory>>
+section below.
+
+. Run the installation playbook, adjusting the paths as necessary:
++
+[source,bash,options="nowrap"]
+----
+ansible-playbook -i ./inventory.erb openshift-ansible/playbooks/byo/config.yml
+----
+
+The installation will run, displaying the typical ansible output. The first
+installation will take longer as the nodes are initially prepared.
+
+Once installed, the only user that exists in the system is the `system:admin`
+user. The installer adds the necessary token to the `.kubeconfig` file of
+the user that performed the install. Running `oc login -u system:admin`
+from that user will login to the cluster with cluster admin privileges.
+
+In this example, HTTP authentication is configured as the identity provider.
+New users are added to the `/etc/origin/master/htpasswd` file.
+
+[source,bash,options="nowrap"]
+----
+htpasswd -b /etc/origin/master/htpasswd developer developer
+htpasswd -b /etc/origin/master/htpasswd admin admin
+----
+
+It is often convenient to have an explicit admin user besides `system:admin`,
+allowing password-based logins as an admin. The commands above add a user
+named admin, however the admin privileges must be assigned through OpenShift
+itself.
+
+[source,bash,options="nowrap"]
+----
+oc adm policy add-cluster-role-to-user cluster-admin admin
+----
+
+The above snippets grants cluster admin privileges to the user named "admin".
+
+At that point, the cluster can be interacted with through the `oc` client
+or the web UI, which can be found at `https://<master_hostname>:8443/console`.
+
+[[example-inventory]]
+==== Example Inventory File
+
+Below is an example inventory file that can be used to deploy a multi-node
+cluster. Adjustments will be needed based on the specific environment. The
+environment being installed in this example is as follows:
+
+* The cluster will be comprised of three nodes: one master and two application
+nodes.
+* The infrastructure pieces (e.g. Docker registry, configured router, etc)
+will be installed on the master node.
+* The VMs are configured to use a custom DNS server that can resolve the full
+hostname of each node.
+* The DNS server will direct all traffic to `*.apps.doblabs.io` to the master node.
+
+[source,options="nowrap"]
+----
+[OSEv3:children]
+masters
+nodes
+etcd
+
+[OSEv3:vars]
+
+# -- Ansible Configuration -----
+ansible_ssh_user=root
+
+# -- OpenShift Version -----
+deployment_type=origin
+openshift_image_tag=v3.6.0
+containerized=true <1>
+
+# -- Configures Auth -----
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}] <2>
+
+# -- DNS Configuration -----
+openshift_public_hostname=openshift.doblabs.io
+openshift_master_default_subdomain=apps.doblabs.io <3>
+
+# -- Other -----
+openshift_disable_check=disk_availability,docker_storage,memory_availability
+enable_docker_excluder=false
+enable_openshift_excluder=false
+
+[masters]
+openshift.doblabs.io
+
+[nodes]
+openshift.doblabs.io openshift_schedulable=true openshift_node_labels="{'region': 'infra', 'zone': 'default'}" <4>
+node1.doblabs.io  openshift_schedulable=true openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
+node2.doblabs.io  openshift_schedulable=true openshift_node_labels="{'region': 'primary', 'zone': 'west'}"
+
+[etcd]
+openshift.doblabs.io <5>
+----
+<1> The cluster will be installed using container images on each node, as compared to
+an RPM-based installation.
+<2> The cluster will use HTTP authentication for users. Additional identity
+providers can be found in
+https://docs.openshift.com/container-platform/latest/install_config/configuring_authentication.html[the OpenShift documentation].
+<3> By default, when creating routes, OpenShift will append this suffix to
+all application hostnames. This must resolve to the node running the router
+in order to have requests forwarded to the correct container.
+<4> Marking the master node as part of the `infrastructure` region will allow
+the infrastructure services to be installed on it.
+<5> Similarly, etcd is run on the master node as well.
