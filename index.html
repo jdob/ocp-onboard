@@ -1,0 +1,3464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6">
+<title>OpenShift Partner Getting Started Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Remove comment around @import statement below when using as a custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+[hidden],template{display:none}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.spread{width:100%}
+p.lead,.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{font-size:1.21875em;line-height:1.6}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite:before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media only screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7;font-weight:bold}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix:before,.clearfix:after,.float-group:before,.float-group:after{content:" ";display:table}
+.clearfix:after,.float-group:after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}
+b.button:before{content:"[";padding:0 3px 0 2px}
+b.button:after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header:before,#header:after,#content:before,#content:after,#footnotes:before,#footnotes:after,#footer:before,#footer:after{content:" ";display:table}
+#header:after,#content:after,#footnotes:after,#footer:after{clear:both}
+#content{margin-top:1.25em}
+#content:before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}
+#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span:before{content:"\00a0\2013\00a0"}
+#header .details br+span.author:before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark:before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber:after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media only screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
+@media only screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+.sect1{padding-bottom:.625em}
+@media only screen and (min-width:768px){.sect1{padding-bottom:1.25em}}
+.sect1+.sect1{border-top:1px solid #efefed}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor:before,h2>a.anchor:before,h3>a.anchor:before,#toctitle>a.anchor:before,.sidebarblock>.content>.title>a.anchor:before,h4>a.anchor:before,h5>a.anchor:before,h6>a.anchor:before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:initial}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
+.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
+@media only screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media only screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]:before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]:before{display:block}
+.listingblock.terminal pre .command:before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt]):before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote:before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}
+.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}
+.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}
+.quoteblock .quoteblock blockquote:before{display:none}
+.verseblock{margin:0 1em 1.25em 1em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract{margin:0 0 1.25em 0;display:block}
+.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{text-align:left;word-spacing:0}
+.quoteblock.abstract blockquote:before,.quoteblock.abstract blockquote p:first-of-type:before{display:none}
+table.tableblock{max-width:100%;border-collapse:separate}
+table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px 0}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot{border-width:1px 0}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
+ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
+ul.inline>li>*{display:block}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist>table tr>td:first-of-type{padding:.4em .75em 0 .75em;line-height:1;vertical-align:top}
+.colist>table tr>td:first-of-type img{max-width:initial}
+.colist>table tr>td:last-of-type{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
+.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em 0;border-width:1px 0 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;text-indent:-1.05em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning:before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution:before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important:before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]:after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@media print{@page{margin:1.25cm .75cm}
+*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]:after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}
+.sect1{padding-bottom:0!important}
+.sect1+.sect1{border:0!important}
+#header>h1:first-child{margin-top:1.25rem}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em 0}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span:before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]:before{display:block}
+#footer{background:none!important;padding:0 .9375em}
+#footer-text{color:rgba(0,0,0,.6)!important;font-size:.9em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<!-- docinfo.html -->
+<link rel="icon"
+type="image/png"
+href="images/favicon.png">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>OpenShift Partner Getting Started Guide</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_quick_start">Quick Start</a></li>
+<li><a href="#installation">Installation</a>
+<ul class="sectlevel2">
+<li><a href="#install-cdk">Installation in a VM - CDK</a></li>
+<li><a href="#install-oc">Installation in Docker - OpenShift Client</a></li>
+<li><a href="#install-ansible">Using the OpenShift Ansible Installer</a></li>
+</ul>
+</li>
+<li><a href="#deployment">Building or Deploying an Existing Container</a>
+<ul class="sectlevel2">
+<li><a href="#docker-hub">Deploying from Docker Hub</a></li>
+<li><a href="#dockerfile">Building from a Dockerfile in OpenShift</a></li>
+<li><a href="#deploy-source-to-image">Source to Image</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li><a href="#basic-usage">Basic Usage</a>
+<ul class="sectlevel2">
+<li><a href="#resource-query-commands">Resource Query Commands</a></li>
+<li><a href="#routes">Routes</a></li>
+<li><a href="#persistent-storage">Persistent Storage</a></li>
+<li><a href="#remote-shell">Remote Shell into a Container</a></li>
+<li><a href="#copy-files">Copying Files into a Running Container</a></li>
+</ul>
+</li>
+<li><a href="#storage">Persistent Storage</a>
+<ul class="sectlevel2">
+<li><a href="#pvs">Persistent Volumes</a></li>
+<li><a href="#pvc-create">Creating a Persistent Volume Claim</a></li>
+<li><a href="#pv-pods">Persistent Volumes Across Pods</a></li>
+<li><a href="#pv-detach">Detaching a Persistent Volume</a></li>
+<li><a href="#pv-reattach">Reattaching a Persistent Volume</a></li>
+<li><a href="#pv-release">Releasing a Persistent Volume</a></li>
+</ul>
+</li>
+<li><a href="#integration">Integrating with OpenShift</a>
+<ul class="sectlevel2">
+<li><a href="#creating-images">Creating Images</a></li>
+<li><a href="#recommended-practices">Recommended Practices</a></li>
+<li><a href="#env-var">Environment Variables</a></li>
+<li><a href="#users">Users</a></li>
+<li><a href="#labels">Labels</a></li>
+<li><a href="#api-auth">Authenticating to the OpenShift APIs</a></li>
+<li><a href="#scc">Security Context Constraints</a></li>
+<li><a href="#service-accounts">Service Accounts</a></li>
+<li><a href="#_authenticating_as_a_service_account">Authenticating as a Service Account</a></li>
+<li><a href="#openshift-network-plugins">OpenShift Network Plugins</a></li>
+</ul>
+</li>
+<li><a href="#anatomy">Anatomy of a Project</a>
+<ul class="sectlevel2">
+<li><a href="#_image_stream">Image Stream</a></li>
+<li><a href="#_replication_controller">Replication Controller</a></li>
+<li><a href="#_deployment_configuration">Deployment Configuration</a></li>
+<li><a href="#_service">Service</a></li>
+</ul>
+</li>
+<li><a href="#terminology">Terminology</a>
+<ul class="sectlevel2">
+<li><a href="#bc">build configuration</a></li>
+<li><a href="#container">container</a></li>
+<li><a href="#dc">deployment configuration</a></li>
+<li><a href="#image">image</a></li>
+<li><a href="#image-stream">image stream</a></li>
+<li><a href="#pod">pod</a></li>
+<li><a href="#project">project</a></li>
+<li><a href="#rc">replication controller</a></li>
+<li><a href="#route">route</a></li>
+<li><a href="#service">service</a></li>
+<li><a href="#source-to-image">source-to-image</a></li>
+</ul>
+</li>
+<li><a href="#involved">Getting Involved</a>
+<ul class="sectlevel2">
+<li><a href="#commons">Commons</a></li>
+<li><a href="#primed">Primed</a></li>
+<li><a href="#openshift-blog">OpenShift Blog</a></li>
+<li><a href="#red-hat-connect">Red Hat Connect</a></li>
+<li><a href="#certification">Certification</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guide is intended to help partners get started using
+and developing for the OpenShift Container Platform.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quick_start">Quick Start</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="#terminology">Terminology</a> - If you&#8217;re new to OpenShift, start here to
+get acquainted with the common terms.</p>
+</div>
+<div class="paragraph">
+<p><a href="#installation">Installation</a> - If you don&#8217;t have access to a running
+installation or want to set up a local environment, check out the installation
+guide for more information on installing the Red Hat Container
+Development Kit (CDK).</p>
+</div>
+<div class="paragraph">
+<p><a href="#deployment">Deployment</a> - If you already have a container deployed to a
+public registry (such as Docker Hub) or a Dockerfile, view the container
+deployment guide. This guide also covers having OpenShift perform the image
+build steps for you against your source code repository.</p>
+</div>
+<div class="paragraph">
+<p><a href="#basic-usage">Basic Usage</a> - Once you&#8217;ve got an application deployed,
+there are some basic commands that can be run to understand all of its pieces
+and how to interact with it.</p>
+</div>
+<div class="paragraph">
+<p><a href="#integration">Integration</a> - If you&#8217;re just beginning to port an
+application to be run on containers, or beginning new development, the
+integration guide can provide more information on how to use OpenShift in an
+active development environment.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installation">Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While there are a number of ways to
+<a href="https://install.openshift.com/">install the upstream OpenShift Origin</a>
+releases, it is recommended that partners test their integrations against
+an enterprise installation of OpenShift Container Platform. There are multiple
+suggested approaches based on the desired deployment.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#install-cdk">Installation in a VM - CDK</a></p>
+</li>
+<li>
+<p><a href="#install-oc">Installation in Docker - OpenShift Client</a></p>
+</li>
+<li>
+<p><a href="#install-ansible">Using the OpenShift Ansible Installer</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In all cases, developers can access the Red Hat bits via the no-cost
+Red Hat Enterprise Linux Developer Suite subscription, accessed through
+<a href="http://developers.redhat.com/" class="bare">http://developers.redhat.com/</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="install-cdk">Installation in a VM - CDK</h3>
+<div class="paragraph">
+<p>The Container Development Kit (CDK) is a pre-built environment for running and
+developing containers using Red Hat OpenShift. It runs as a virtual machine and
+supports a number of different virtualization providers and host operating
+systems.</p>
+</div>
+<div class="paragraph">
+<p>There are two pieces that must be downloaded, with both being found at
+<a href="http://developers.redhat.com/products/cdk/download/" class="bare">http://developers.redhat.com/products/cdk/download/</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Red Hat Container Tools are used in conjunction with
+<a href="https://www.vagrantup.com/">Vagrant</a> to start the pre-built VM images.
+These tools include the necessary vagrant files and plugins for starting a VM
+running either Red Hat OpenShift or upstream Kubernates on its own,
+as well as registering the VM with RHN.</p>
+</li>
+<li>
+<p>The virtual machine image appropriate for your preferred hypervisor
+(the currently supported hypervisors include VirtualBox, libvirt,
+and HyperV.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Details on the CDK installation process can be found on the
+<a href="https://access.redhat.com/documentation/en/red-hat-container-development-kit/latest/">Red Hat Customer Portal</a>.
+Additional information on interacting with the CDK VMs can be found at
+the <a href="https://www.vagrantup.com/docs/">Vagrant Documentation</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="install-oc">Installation in Docker - OpenShift Client</h3>
+<div class="paragraph">
+<p>If a VM is not feasible or desired, OpenShift can be run directly inside of
+Docker on the host machine. There are two steps required:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Download the OpenShift client from the
+<a href="https://access.redhat.com/downloads/content/290">Red Hat Customer Portal product page</a>.
+Builds are provided for Linux, macOS, and Windows. The client is a
+single executable named <code>oc</code> and can be used for both
+setting up the cluster as well as all further command line interaction with
+the running server.</p>
+</li>
+<li>
+<p>Run the cluster creation command, specifying the appropriate Red Hat hosted
+image:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc cluster up --image=registry.access.redhat.com/openshift3/ose</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the oc command finishes, information will be provided on how to access
+the server. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">-- Server Information ...
+OpenShift server started.
+The server is accessible via web console at:
+    https://159.203.119.95:8443
+
+You are logged in as:
+    User:     developer
+    Password: developer
+
+To login as administrator:
+    oc login -u system:admin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As expected, running <code>docker ps</code> shows a number of deployed containers, all
+of which service the running installation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ docker ps
+CONTAINER ID        IMAGE                                                                 COMMAND                  CREATED             STATUS              PORTS               NAMES
+06576c15b6a3        registry.access.redhat.com/openshift3/ose-docker-registry:v3.4.0.40   "/bin/sh -c 'DOCKER_R"   9 minutes ago       Up 9 minutes                            k8s_registry.a8db0f16_docker-registry-1-rnk4b_default_5644c474-e7e4-11e6-a0c8-362219689e3e_ea45467b
+7a4093685a82        registry.access.redhat.com/openshift3/ose-haproxy-router:v3.4.0.40    "/usr/bin/openshift-r"   9 minutes ago       Up 9 minutes                            k8s_router.a21b2f8_router-1-8tg8h_default_58b1ede7-e7e4-11e6-a0c8-362219689e3e_da907d85
+9b13ed6c7d2d        registry.access.redhat.com/openshift3/ose-pod:v3.4.0.40               "/pod"                   9 minutes ago       Up 9 minutes                            k8s_POD.8f3ae681_router-1-8tg8h_default_58b1ede7-e7e4-11e6-a0c8-362219689e3e_279eb0a6
+7850f7da7bd3        registry.access.redhat.com/openshift3/ose-pod:v3.4.0.40               "/pod"                   9 minutes ago       Up 9 minutes                            k8s_POD.b6fc0873_docker-registry-1-rnk4b_default_5644c474-e7e4-11e6-a0c8-362219689e3e_034c5b1d
+5d6c6d7ed3b0        registry.access.redhat.com/openshift3/ose:v3.4.0.40                   "/usr/bin/openshift s"   10 minutes ago      Up 10 minutes                           origin</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="install-ansible">Using the OpenShift Ansible Installer</h3>
+<div class="paragraph">
+<p>A significantly more customized installation can be achieved through the
+<a href="https://github.com/openshift/openshift-ansible.git">OpenShift Ansible Installer</a>.
+The full instructions on using this method can be found in the
+<a href="https://docs.openshift.com/container-platform/latest/install_config/install/advanced_install.html">Advanced Installation</a>
+section of the OpenShift documentation.</p>
+</div>
+<div class="sect3">
+<h4 id="_example">Example</h4>
+<div class="paragraph">
+<p>The OpenShift Ansible Installer trades simplicity for flexibility. With such a
+wide array of options, it can be difficult to determine a starting point. The
+following example illustrates the steps necessary to install a multi-node
+cluster on top of a number of CentOS 7 VMs.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install the desired number of virtual machines. Guidelines on the recommended
+sizes can be found in the <a href="https://docs.openshift.com/container-platform/latest/install_config/install/prerequisites.html">Prerequisites</a>
+section of the OpenShift documentation.</p>
+</li>
+<li>
+<p>Enable the EPEL repository on each VM:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">yum -y install epel-release</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Optional but recommended: Update the newly installed system:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">yum update -y</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Clone the ansible installer repository:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">git clone https://github.com/openshift/openshift-ansible.git</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Ensure each VM can resolve the DNS names for all nodes in the cluster.
+While this can be achieved through <code>/etc/hosts</code>, it will be difficult when
+it comes time to create routes to each application. Having access to a
+DNS server will make things easier in the long run.</p>
+</li>
+<li>
+<p>Ensure the VM running the installer can SSH into each node using key
+access. Unless otherwise configured, the installer will attempt to SSH
+into each node as <code>root</code>.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If the installer is run on one of the nodes that will be part of
+the cluster, it must be able to successfully SSH into itself as well.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Create an inventory file to drive the installation. The inventory file
+will indicate the VMs to include and what role they will serve in the
+cluster (e.g. master, application node, etc.). The inventory file also
+contains other configuration related to how the cluster will function.
+More information on this file can be found in the <a href="#example-inventory">Example Inventory File</a>
+section below.</p>
+</li>
+<li>
+<p>Run the installation playbook, adjusting the paths as necessary:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">ansible-playbook -i ./inventory.erb openshift-ansible/playbooks/byo/config.yml</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The installation will run, displaying the typical ansible output. The first
+installation will take longer as the nodes are initially prepared.</p>
+</div>
+<div class="paragraph">
+<p>Once installed, the only user that exists in the system is the <code>system:admin</code>
+user. The installer adds the necessary token to the <code>.kubeconfig</code> file of
+the user that performed the install. Running <code>oc login -u system:admin</code>
+from that user will login to the cluster with cluster admin privileges.</p>
+</div>
+<div class="paragraph">
+<p>In this example, HTTP authentication is configured as the identity provider.
+New users are added to the <code>/etc/origin/master/htpasswd</code> file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">htpasswd -b /etc/origin/master/htpasswd developer developer
+htpasswd -b /etc/origin/master/htpasswd admin admin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is often convenient to have an explicit admin user besides <code>system:admin</code>,
+allowing password-based logins as an admin. The commands above add a user
+named admin, however the admin privileges must be assigned through OpenShift
+itself.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">oc adm policy add-cluster-role-to-user cluster-admin admin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above snippets grants cluster admin privileges to the user named "admin".</p>
+</div>
+<div class="paragraph">
+<p>At that point, the cluster can be interacted with through the <code>oc</code> client
+or the web UI, which can be found at <code><a href="https://&lt;master_hostname&gt;:8443/console" class="bare">https://&lt;master_hostname&gt;:8443/console</a></code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-inventory">Example Inventory File</h4>
+<div class="paragraph">
+<p>Below is an example inventory file that can be used to deploy a multi-node
+cluster. Adjustments will be needed based on the specific environment. The
+environment being installed in this example is as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The cluster will be comprised of three nodes: one master and two application
+nodes.</p>
+</li>
+<li>
+<p>The infrastructure pieces (e.g. Docker registry, configured router, etc)
+will be installed on the master node.</p>
+</li>
+<li>
+<p>The VMs are configured to use a custom DNS server that can resolve the full
+hostname of each node.</p>
+</li>
+<li>
+<p>The DNS server will direct all traffic to <code>*.apps.doblabs.io</code> to the master node.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code>[OSEv3:children]
+masters
+nodes
+etcd
+
+[OSEv3:vars]
+
+# -- Ansible Configuration -----
+ansible_ssh_user=root
+
+# -- OpenShift Version -----
+deployment_type=origin
+openshift_image_tag=v3.6.0
+containerized=true <i class="conum" data-value="1"></i><b>(1)</b>
+
+# -- Configures Auth -----
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}] <i class="conum" data-value="2"></i><b>(2)</b>
+
+# -- DNS Configuration -----
+openshift_public_hostname=openshift.doblabs.io
+openshift_master_default_subdomain=apps.doblabs.io <i class="conum" data-value="3"></i><b>(3)</b>
+
+# -- Other -----
+openshift_disable_check=disk_availability,docker_storage,memory_availability
+enable_docker_excluder=false
+enable_openshift_excluder=false
+
+[masters]
+openshift.doblabs.io
+
+[nodes]
+openshift.doblabs.io openshift_schedulable=true openshift_node_labels="{'region': 'infra', 'zone': 'default'}" <i class="conum" data-value="4"></i><b>(4)</b>
+node1.doblabs.io  openshift_schedulable=true openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
+node2.doblabs.io  openshift_schedulable=true openshift_node_labels="{'region': 'primary', 'zone': 'west'}"
+
+[etcd]
+openshift.doblabs.io <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The cluster will be installed using container images on each node, as compared to
+an RPM-based installation.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The cluster will use HTTP authentication for users. Additional identity
+providers can be found in
+<a href="https://docs.openshift.com/container-platform/latest/install_config/configuring_authentication.html">the OpenShift documentation</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>By default, when creating routes, OpenShift will append this suffix to
+all application hostnames. This must resolve to the node running the router
+in order to have requests forwarded to the correct container.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Marking the master node as part of the <code>infrastructure</code> region will allow
+the infrastructure services to be installed on it.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Similarly, etcd is run on the master node as well.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deployment">Building or Deploying an Existing Container</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OpenShift can deploy existing code in a number of ways. Pre-built containers
+stored in a Docker registry, such as <a href="https://hub.docker.com/">Docker Hub</a>
+can be downloaded and deployed directly to OpenShift. OpenShift can also
+build images from source code in a <a href="https://git-scm.com/">git</a> repository,
+regardless of whether or not a Dockerfile is present.</p>
+</div>
+<div class="sect2">
+<h3 id="docker-hub">Deploying from Docker Hub</h3>
+<div class="paragraph">
+<p>The simplest way to get an existing image into OpenShift is to retrieve
+the image from Docker Hub. OpenShift will automatically create a new
+<a href="#image-stream">image stream</a> and map to the image in Docker Hub.</p>
+</div>
+<div class="sect3">
+<h4 id="_example_2">Example</h4>
+<div class="paragraph">
+<p>Create a new application in the current project, specifying the name of the
+image in Docker Hub:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc new-app jdob/python-web</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s it. OpenShift will take care of retrieving the image and setting up
+all of the necessary resources to deploy pods for the application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>By default, the newly deployed application will not be accessible. A
+<a href="#route">route</a> is needed to expose the service to the outside
+world. See the <a href="#routes">routes</a> section for more information
+on how to expose and access a service.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dockerfile">Building from a Dockerfile in OpenShift</h3>
+<div class="paragraph">
+<p>When creating a new application, OpenShift can be passed the location of a
+git repository to automatically trigger a new image build. The type of build
+performed will depend on what is found in the repository.</p>
+</div>
+<div class="paragraph">
+<p>If a Dockerfile is present, OpenShift will perform the following steps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <a href="#bc">build configuration</a> is created to correspond to building
+an image from the repository&#8217;s Dockerfile. The location of the repository,
+as well as the settings identifying the build as a Docker build
+(<code>Strategy: Docker</code>), will be present.</p>
+</li>
+<li>
+<p>An <a href="#image-stream">image stream</a> is created to reference images
+built by the configuration, which is later used as a trigger for new
+deployments. In practice, when a new build is performed, the application will
+be redeployed with the new image.</p>
+</li>
+<li>
+<p>The first build of the created configuration is started.</p>
+</li>
+<li>
+<p>The remainder of the necessary components, as described in
+<a href="#anatomy">Anatomy of a Project</a> are created, including the replication controller
+and service.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_example_3">Example</h4>
+<div class="paragraph">
+<p>The standard command for creating an application is used, but instead of
+referencing a specific image to deploy, the URL to the git repository is
+provided:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc new-app https://github.com/jdob-openshift/python-web</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Of particular interest in this example is the created build configuration.
+The list of build configurations can be found using the commands in the
+<a href="#resource-query-commands">query commands</a> section and specifying
+the <code>buildconfig</code> (or <code>bc</code> for short) type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get buildconfig
+NAME               TYPE      FROM      LATEST
+python-web         Docker    Git       1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Specific details about the build configuration are retrieved using the
+<code>describe</code> command and the name of the configuration itself:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc describe bc python-web
+Name: python-web
+Namespace: dockerfile-build
+Created: 49 minutes ago
+Labels: app=python-web
+Annotations: openshift.io/generated-by=OpenShiftNewApp
+Latest Version: 1
+
+Strategy: Docker <i class="conum" data-value="1"></i><b>(1)</b>
+URL: https://github.com/jdob-openshift/python-web <i class="conum" data-value="2"></i><b>(2)</b>
+From Image: ImageStreamTag openshift/python:latest <i class="conum" data-value="3"></i><b>(3)</b>
+Output to: ImageStreamTag python-web:latest
+
+Build Run Policy: Serial
+Triggered by: Config, ImageChange
+Webhook GitHub:
+    URL: https://localhost:8443/oapi/v1/namespaces/dockerfile-build/buildconfigs/python-web/webhooks/iqQhagYGyA4OrZ3jXZpa/github
+Webhook Generic:
+    URL: https://localhost:8443/oapi/v1/namespaces/dockerfile-build/buildconfigs/python-web/webhooks/B1KFkXvJmi_5KycoFYkw/generic
+    AllowEnv:	false</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The strategy is set to <code>Docker</code>, indicating that the image should be built
+using a Dockerfile found in the repository. For comparison, see the
+<a href="#deploy-source-to-image">Source to Image</a> section.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>URL</code> value corresponds to the git repository where the source is found.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>From Image</code> is the base image for the build and is derived directly
+from the Dockerfile.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>It is also worth noting that webhook URLs are provided. These URLs can be
+used to inform OpenShift of changes to the source code and trigger a new
+build. Depending on the <a href="#dc">deployment configuration</a>, new images
+built from this trigger will automatically be deployed (this is the default
+behavior for the deployment configuration automatically created by this
+process). GitHub, for example, supports adding this URL to a repository to
+automatically trigger a new build when a commit is pushed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>By default, the newly deployed application will not be accessible. A
+<a href="#route">route</a> is needed to expose the service to the outside
+world. See the <a href="#routes">routes</a> section for more information
+on how to expose and access a service.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deploy-source-to-image">Source to Image</h3>
+<div class="paragraph">
+<p>OpenShift&#8217;s Source-to-Image (S2I for short) functionality takes the ability to
+build images from a repository one step further by removing the need for
+an explicit Dockerfile.</p>
+</div>
+<div class="paragraph">
+<p>Not all Docker images can be used as the basis for an S2I build. Builder
+Images, as they are known, have minimal but specific requirements regarding
+files that OpenShift will invoke during the build. More information on
+creating new builder images can be found in the create_builder_image
+section.</p>
+</div>
+<div class="paragraph">
+<p>There are two ways to determine the base image that will be used in the build:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Explicitly specifying the image when the application is created.</p>
+</li>
+<li>
+<p>If no base image is indicated, OpenShift will attempt to choose an
+appropriate base. For example, the presence of a <code>requirements.txt</code> file
+will cause OpenShift to attempt to use the latest Python builder image
+as the base.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once the git repository (and optionally, an explicit base image) are specified,
+OpenShift takes the following steps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A container is started using the builder image.</p>
+</li>
+<li>
+<p>The source code is downloaded from the specified repository and injected
+into the container.</p>
+</li>
+<li>
+<p>The builder container performs the appropriate steps depending on the base
+image. Each builder image includes scripts that perform the necessary steps
+to install applications of the supported type. For example, this may include
+installing Python packages via pip or copying HTML pages to the configured
+hosting directory.</p>
+</li>
+<li>
+<p>The builder container, now containing the installed source code, is committed
+to an image. The image&#8217;s entrypoint is set based on the builder image (in
+most cases, this is defaulted to a standard but can be overridden using
+environment variables).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As with <a href="#dockerfile">Building from a Dockerfile in OpenShift</a>, the other components of a service are
+automatically created, a build is triggered, and a new deployment performed.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is important to understand how base images are configured. Since there
+is no user-defined Dockerfile in place, applications are restricted to
+using ports exposed by the builder image. Depending on the application,
+it may be useful to define a custom builder image with the
+appropriate ports exposed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_example_4">Example</h4>
+<div class="paragraph">
+<p>The standard command for creating an application is used, but instead of
+referencing a specific image to deploy, the URL to the git repository is
+provided:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc new-app python:3.4~https://github.com/jdob-openshift/python-web-source</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note the snippet preceding the git repository URL. This is used to tell
+OpenShift the base image to build from and is indicated by adding the
+image and tag before the repository URL, separated by a <code>~</code>.</p>
+</div>
+<div class="paragraph">
+<p>The build configuration for an S2I will differ slightly from one built from
+a Dockerfile:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc describe bc python-web-source
+Name: python-web-source
+Namespace: source-build
+Created: 6 minutes ago
+Labels: app=python-web-source
+Annotations: openshift.io/generated-by=OpenShiftNewApp
+Latest Version: 5
+
+Strategy: Source <i class="conum" data-value="1"></i><b>(1)</b>
+URL: https://github.com/jdob-openshift/python-web-source <i class="conum" data-value="2"></i><b>(2)</b>
+From Image: ImageStreamTag openshift/python:3.4 <i class="conum" data-value="3"></i><b>(3)</b>
+Output to: ImageStreamTag python-web-source:latest
+
+Build Run Policy: Serial
+Triggered by: Config, ImageChange
+Webhook GitHub:
+    URL: https://localhost:8443/oapi/v1/namespaces/web2/buildconfigs/python-web-source/webhooks/AipYevj9pknT6SDWJNR0/github
+Webhook Generic:
+    URL: https://localhost:8443/oapi/v1/namespaces/web2/buildconfigs/python-web-source/webhooks/R0U9P0QgPy3ncXMQphnC/generic
+    AllowEnv: false</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The strategy is set to <code>Source</code>, indicating that the image should be built
+against a builder image.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>URL</code> value corresponds to the git repository where the source is found.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>From Image</code> is the builder image for the build. This value can be
+derived automatically by OpenShift or, in this example, explicitly set
+when the application is created.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As noted in <a href="#dockerfile">Building from a Dockerfile in OpenShift</a>, the webhook URLs can be used to have
+the source repository automatically trigger a new build when new commits
+are made.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Unlike deploying an existing image, applications created through S2I
+are automatically configured with a route by default.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="next-steps">Next Steps</h3>
+<div class="paragraph">
+<p>Now that an application is deployed, see the <a href="#anatomy">Anatomy of a Project</a> section
+guide for more information on the different resources that were created, or the
+<a href="#basic-usage">Basic Usage</a> guide for other ways to interact with the newly
+deployed application. Information on enhancing container images to utilize
+OpenShift&#8217;s features can be found in the <a href="#integration">Integrating with OpenShift</a> guide.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="basic-usage">Basic Usage</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="resource-query-commands">Resource Query Commands</h3>
+<div class="paragraph">
+<p>The CLI provides two useful commands for listing and inspecting resources
+in the OpenShift installation.</p>
+</div>
+<div class="sect3">
+<h4 id="get">Get</h4>
+<div class="paragraph">
+<p>The <code>get</code> command displays a list of a particular resource type, along with
+some basic summary information on each entry. The desired resource type is
+specified as an argument to the <code>get</code> call and the output will vary based
+on the type of resource being queried. The full list of resource types can
+be found by calling <code>oc get</code> with no arguments.</p>
+</div>
+<div class="paragraph">
+<p>For example, retrieving the list of <a href="#image-stream">image stream</a>
+resources will display tagging and repository information:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get is
+NAME         DOCKER REPO                                TAGS      UPDATED
+python-web   172.30.53.244:5000/python-web/python-web   latest    2 hours ago</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Retrieving the list of services, however, displays information on the
+associated IP addresses and ports:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get services
+NAME         CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+python-web   172.30.167.215   &lt;none&gt;        8080/TCP   2h</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="describe">Describe</h4>
+<div class="paragraph">
+<p>The <code>describe</code> command is used to retrieve specific details on a particular
+resource. In addition to the resource&#8217;s name, the type of resource must also
+be provided (in many cases, resources of different types will share the same
+name to ease understanding their relationship). If the resource name is
+omitted, details about all resources of that type are displayed (depending
+on your environment, the output may be very long and unwieldy).</p>
+</div>
+<div class="paragraph">
+<p>Using the image stream found above, detailed information can be displayed
+using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc describe is python-web
+Name:                   python-web
+Namespace:              python-web
+Created:                2 hours ago
+Labels:                 app=python-web
+Annotations:            openshift.io/generated-by=OpenShiftNewApp
+                        openshift.io/image.dockerRepositoryCheck=2016-10-14T15:05:43Z
+Docker Pull Spec:       172.30.53.244:5000/python-web/python-web
+Unique Images:          1
+Tags:                   1
+
+latest
+tagged from jdob/python-web
+
+* jdob/python-web@sha256:3f87be1825405ee8c7da23d7a6916090ecbb2d6e7b04fcd0fd1dc194173d2bc0
+    2 hours ago</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As with <code>get</code>, the output will vary based on the type of resource being
+described.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="routes">Routes</h3>
+<div class="paragraph">
+<p>When a container is created in OpenShift, it is initially assigned an IP
+address and an internal service name within the scope of its project. The
+service name allows it to be accessed by other applications running inside
+of the same project. This becomes a useful default for large projects that
+have a number of internal services but only a small amount of public
+endpoints.</p>
+</div>
+<div class="paragraph">
+<p>An explicit step is required to make a container publicly accessible. The
+application must be <em>exposed</em> by creating a route. When a route is exposed,
+the host name can be specified. In most cases, the DNS resolution for the
+hostname is handled outside of OpenShift. If a hostname is not provided,
+OpenShift will generate an xip.io address that can be used local to the
+OpenShift instance.</p>
+</div>
+<div class="paragraph">
+<p>By default, <a href="http://www.haproxy.org/">HAProxy</a> is used to manage the routes,
+however
+<a href="https://docs.openshift.org/latest/install_config/router/index.html#install-config-router-overview&gt;">plugins for other providers are available</a>
+Routes may optionally be configured with TLS credentials for secure
+communications.</p>
+</div>
+<div class="paragraph">
+<p>Routes are created through the <code>expose</code> command. Arguments are supported for
+customizing the route (the most common being <code>--hostname</code> when using an
+existing DNS server), but for development purposes, the defaults are usually
+sufficient:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc expose service python-web
+route "python-web" exposed
+
+$ oc get route
+NAME         HOST/PORT                                    PATH      SERVICES     PORT       TERMINATION
+python-web   python-web-python-web.apps.10.2.2.2.xip.io             python-web   8080-tcp
+
+$ oc describe route
+Name:           python-web
+Namespace:      python-web
+Created:        6 seconds ago
+Labels:         app=python-web
+Annotations:    openshift.io/host.generated=true
+Requested Host: python-web-python-web.apps.10.2.2.2.xip.io exposed on router router 6 seconds ago
+
+Path:            &lt;none&gt;
+TLS Termination: &lt;none&gt;
+Insecure Policy: &lt;none&gt;
+Endpoint Port:   8080-tcp
+
+Service:   python-web
+Weight:    100 (100%)
+Endpoints: 172.17.0.12:8080</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example, OpenShift generated a corresponding xip.io address that
+can be used to access the service. A quick test from the host running the
+OpenShift VM shows the service can be accessed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ curl python-web-python-web.apps.10.2.2.2.xip.io
+Hello World</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More information on routes can be found in the
+<a href="https://docs.openshift.org/latest/architecture/core_concepts/routes.html">corresponding section</a>
+of the OpenShift documentation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="persistent-storage">Persistent Storage</h3>
+<div class="paragraph">
+<p>Along with routes, a common configuration made to pods is the addition of
+persistent storage volumes. As this is a lengthy topic, it can be found in
+the <a href="#storage">Persistent Storage</a> section of this guide.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remote-shell">Remote Shell into a Container</h3>
+<div class="paragraph">
+<p>While debugging an application, there are many times where it can be useful
+open a terminal into a running container. Both the web UI and command line
+interface support this directly; there is no need to look up IP addresses
+or manually deal with SSH keys.</p>
+</div>
+<div class="paragraph">
+<p>The <code>rsh</code> command is used to connect to a specific pod by its name. The
+pod names can be retrieved using the <code>get</code> command under the <code>pods</code>
+resource type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get pods
+NAME                 READY     STATUS    RESTARTS   AGE
+python-web-4-hwwub   1/1       Running   1          6d
+
+$ oc rsh python-web-4-hwwub
+# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  src  srv  sys  tmp  usr  var</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="copy-files">Copying Files into a Running Container</h3>
+<div class="paragraph">
+<p>Similar to opening a remote shell, the OpenShift interfaces provide built-in
+support for copying files from a local system into a running container.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Keep in mind that containers are typically treated as ephemeral. Files
+copied to a running container in this fashion are not guaranteed to survive
+pod restarts or scaling operations. This functionality is primarily intended
+for debugging or development situations.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Apropos of its name, the <code>rsync</code> command will attempt to use rsync to
+transmit files if the service is available on the destination container. If
+it is not, OpenShift will fall back to sending a tarfile with the contents.
+Keep in mind that the normal restrictions when using tar over rsync will
+be present; the destination directory must exist and the entire contents will
+be transmitted rather than only sending changed files.</p>
+</div>
+<div class="paragraph">
+<p>The <code>rsync</code> command works similar to the tranditional rsync command,
+accepting the source and destination directories. Instead of specifying a
+hostname or IP address, the pod name is used in the destination:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get pods
+NAME                 READY     STATUS    RESTARTS   AGE
+python-web-4-hwwub   1/1       Running   1          6d
+
+$ oc rsync . python-web-4-hwwub:/doc
+WARNING: cannot use rsync: rsync not available in container
+[output truncated]
+
+$ oc rsh python-web-4-hwwub
+# ls /doc
+Makefile  README.md  _build  advanced.rst  basic-usage.rst</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In the above example, rsync was not supported by the container, so the
+<code>/doc</code> directory was manually created in advance.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="storage">Persistent Storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are two main concepts to be aware of regarding persistent storage
+in OpenShift:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>persistent volume</code> is the actual allocation of storage in OpenShift.
+These are created by the cluster administrator and will define behavior
+such as capacity, access modes, reclamation policy, and the type of
+storage (NFS, GlusterFS, AWS Elastic Block Stores, etc.)</p>
+</li>
+<li>
+<p>A <code>persistent volume claim</code> is the assignment and usage of a persistent
+volume by a user. A claim is made within the scope of a project and can
+be attached to a <a href="#dc">deployment configuration</a> (in practice, this
+effectively attaches it to all of the pods deployed by that configuration).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The creation of the persistent volumes is outside the scope of this guide
+(by default, the CDK installation provides a few volumes for testing purposes).
+This section will cover the creation and usage of the claims. Detailed
+information on configuring persistent volumes can be found in the
+<a href="https://docs.openshift.com/container-platform/latest/architecture/additional_concepts/storage.html">online documentation</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="pvs">Persistent Volumes</h3>
+<div class="paragraph">
+<p>The first thing to keep in mind is that non-cluster admins do not have
+permissions to view the configured persisted volumes. This is considered
+an administrative task; users only needs to be concerned with their requested
+and assigned claims:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc whoami
+user
+
+$ oc get pv
+User "user" cannot list all persistentvolumes in the cluster</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As a reference, the same command, when run as the cluster admin, displays
+details on the the volumes available:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc whoami
+admin
+
+$ oc get pv
+NAME      CAPACITY   ACCESSMODES   STATUS      CLAIM     REASON    AGE
+pv01      10Gi       RWO,RWX       Available                       39d
+pv02      10Gi       RWO,RWX       Available                       39d
+pv03      10Gi       RWO,RWX       Available                       39d
+pv04      10Gi       RWO,RWX       Available                       39d
+pv05      10Gi       RWO,RWX       Available                       39d</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pvc-create">Creating a Persistent Volume Claim</h3>
+<div class="paragraph">
+<p>For context, the following example will be run against an existing project
+with a previously deployed application. The actual behavior of the application
+is irrelevant; this example will look directly at the filesystem across
+multiple pods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc project
+Using project "python-web" on server "https://10.2.2.2:8443".
+
+$ oc get services
+NAME         CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+python-web   172.30.29.153   &lt;none&gt;        8080/TCP   40m
+
+$ oc get dc
+NAME         REVISION   DESIRED   CURRENT   TRIGGERED BY
+python-web   2          1         1         config,image(python-web:latest)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The last line above is important to note. Volumes are not allocated directly
+against a pod (or pods) but rather the deployment configuration responsible
+for their creation.</p>
+</div>
+<div class="paragraph">
+<p>Before the volume is created, a quick sanity check
+<a href="#remote-shell">run directly on the pod</a> shows that the mount
+point does not already exist:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get pods
+NAME                 READY     STATUS      RESTARTS   AGE
+python-web-3-sox29   1/1       Running     0          17m
+
+$ oc rsh python-web-3-sox29
+sh-4.2$ ls /demo
+ls: cannot access /d: No such file or directory</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>volume</code> command can be used to both request a volume and specify its
+attachment point into the running containers:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc volume \
+    dc python-web \ <i class="conum" data-value="1"></i><b>(1)</b>
+    --add \ <i class="conum" data-value="2"></i><b>(2)</b>
+    --claim-size 512M \ <i class="conum" data-value="3"></i><b>(3)</b>
+    --mount-path /demo \ <i class="conum" data-value="4"></i><b>(4)</b>
+    --name demo-vol <i class="conum" data-value="5"></i><b>(5)</b>
+persistentvolumeclaims/pvc-axv7b
+deploymentconfigs/python-web</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Indicates where the volume will be added. As with other
+many other commands in the client, two pieces of information are needed:
+the resource type ("dc" is shorthand for "deployment configuration")
+and the name of the resource. Alternatively, they could be joined with
+a front slash into a single term (<code>dc/python-web</code>).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The volume action being performed. In this case, a volume is
+being added to the configuration. By comparison, <code>--remove</code> is used to
+detach a volume.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>While the requests is for a volume "of at least 512MB". The actual
+allocated volume may be larger as OpenShift will fulfill the claim with
+the best fit available.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Dictates where in the pod(s) to mount the storage volume.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Identifier used to reference the volume at a later time.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The output shows that a new claim has been created (<code>pvc-axv7b</code>) and the
+deployment configuration <code>python-web</code> has been edited.</p>
+</div>
+<div class="paragraph">
+<p>There are a few things to verify at this point. Details about a claim can
+be found under the <code>pvc</code> resource type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get pvc
+NAME        STATUS    VOLUME    CAPACITY   ACCESSMODES   AGE
+pvc-axv7b   Bound     pv05      10Gi       RWO,RWX       40m
+
+$ oc describe pvc pvc-axv7b                                                                                                                                                        1 ↵
+Name:          pvc-axv7b
+Namespace:     python-web
+Status:        Bound
+Volume:        pv05
+Labels:        &lt;none&gt;
+Capacity:      10Gi
+Access Modes:  RWO,RWX
+No events.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that, despite the claim only requesting 512M, the provided capacity is
+10G. The output of the <code>get pv</code> command above shows that the installation
+is only configured with 10Gi volumes, which makes it the "best fit" for the
+claim.</p>
+</div>
+<div class="paragraph">
+<p>The <code>volume</code> command can also provide details on the attached volume,
+including which deployment configurations have volumes and where they are
+mounted:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ oc volume dc --all
+deploymentconfigs/python-web
+  pvc/pvc-axv7b (allocated 10GiB) as demo-vol
+    mounted at /demo</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Repeating the earlier test on the pod, there is now a <code>/demo</code> mount point
+available:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc rsh python-web-3-sox29
+sh-4.2$ ls /demo
+sh-4.2$</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pv-pods">Persistent Volumes Across Pods</h3>
+<div class="paragraph">
+<p>To reinforce the concept that the volume is attached to the deployment
+configuration, and thus all pods spawned by it, the application can be
+scaled and used to show the mount points refer to the same volume:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc scale dc python-web --replicas 2
+deploymentconfig "python-web" scaled
+
+$ oc get pods
+NAME                 READY     STATUS      RESTARTS   AGE
+python-web-3-ka3y2   1/1       Running     0          1m
+python-web-3-sox29   1/1       Running     0          1h</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The newly created pod, <code>ka3y2</code>, will have the same configuration as the
+previous pod since they were created from the same deployment configuration.
+In particular, this includes the mounted volume:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ oc rsh python-web-3-ka3y2
+sh-4.2$ ls /demo
+sh-4.2$</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Proof that they refer to the same volume can be seen by adding a file to the
+volume on one of the pods and verifying its existence on the other:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc rsh python-web-3-ka3y2
+sh-4.2$ echo "Hello World" &gt; /demo/test
+sh-4.2$ exit
+
+$ oc rsh python-web-3-sox29
+sh-4.2$ ls /demo
+test
+sh-4.2$ cat /demo/test
+Hello World
+sh-4.2$</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pv-detach">Detaching a Persistent Volume</h3>
+<div class="paragraph">
+<p>In addition to demonstrating the volume is shared across pods, it is also
+important to emphasize the "persistent" aspect of it. The <code>volume</code> command
+is also used to detach a volume from a configuration (and thus all of its
+pods):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc volume dc python-web --remove --name demo-vol
+deploymentconfigs/python-web</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the <code>--name demo-vol</code> argument refers to the name specified
+during creation above.</p>
+</div>
+<div class="paragraph">
+<p>Attempting to reconnect to the pod to verify the volume was detached shows
+a potentially surprising result:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc rsh python-web-3-sox29                                                                                                                                                        1 ↵
+Error from server: pods "python-web-3-sox29" not found</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Keep in mind that changing a pod&#8217;s volumes is no different than any other
+change to the configuration. The pods are not updated, but rather the old
+pods are scaled down while new pods, with the updated configuration, are
+deployed. The deployment configuration event log shows that a new deployment
+was created for the change (the format of the output below is heavily modified
+for readability, but the data was returned from the call):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc describe dc python-web
+Events:
+FirstSeen  Reason             Message
+---------  ------             -------
+1h         DeploymentCreated  Created new deployment "python-web-2" for version 2
+1h         DeploymentCreated  Created new deployment "python-web-3" for version 3
+11m        DeploymentScaled   Scaled deployment "python-web-3" from 1 to 2
+2m         DeploymentCreated  Created new deployment "python-web-4" for version 4</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The four events listed correspond to the examples run in this section:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initial successful deployment (the "version 1" intentionally skipped).</p>
+</li>
+<li>
+<p>The "version 3" deployment corresponds to adding the volume.</p>
+</li>
+<li>
+<p>The scaling operation retains the deployment version (the "3" in
+<code>python-web-3</code>) and creates a new pod.</p>
+</li>
+<li>
+<p>The "version 4" deployment was made to activate the change to remove the
+volume.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Getting back to verifying the volume was removed, one of the new pods can be
+accessed to check for the presence of the mount point:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ oc get pods
+NAME                 READY     STATUS      RESTARTS   AGE
+python-web-4-j3u0r   1/1       Running     0          11m
+python-web-4-vrq2t   1/1       Running     0          11m
+
+$ oc rsh python-web-4-j3u0r
+sh-4.2$ ls /demo
+ls: cannot access /demo: No such file or directory</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pv-reattach">Reattaching a Persistent Volume</h3>
+<div class="paragraph">
+<p>Detaching a volume from a deployment configuration does not release the
+volume or reclaim its space. Listing the volumes as above (again as a
+cluster admin) shows the volume is still in use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get pv
+NAME      CAPACITY   ACCESSMODES   STATUS      CLAIM                  REASON    AGE
+pv01      10Gi       RWO,RWX       Available                                    39d
+pv02      10Gi       RWO,RWX       Available                                    39d
+pv03      10Gi       RWO,RWX       Available                                    39d
+pv04      10Gi       RWO,RWX       Available                                    39d
+pv05      10Gi       RWO,RWX       Bound       python-web/pvc-axv7b             39d</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Additionally, as the non-cluster admin user, the claim is still present as
+a resource:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get pvc
+NAME        STATUS    VOLUME    CAPACITY   ACCESSMODES   AGE
+pvc-axv7b   Bound     pv05      10Gi       RWO,RWX       1h</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The volume can be added back into the deployment configuration (or a different
+one if so desired) using a variation of the <code>volume</code> command initially used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc volume \
+    dc python-web
+    --add
+    --type pvc
+    --claim-name pvc-axv7b
+    --mount-path /demo-2
+    --name demo-vol-2
+deploymentconfigs/python-web</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The difference in this call is that instead of specifying details about the
+claim being requested (such as its capacity), a specific claim is referenced
+(the name being found using the <code>get pvc</code> command above). For demo purposes,
+it has been mounted to a slightly different path and using a different volume
+name.</p>
+</div>
+<div class="paragraph">
+<p>As with the previous configuration changes, new pods have been deployed.
+Connecting to one of these pods shows the contents of the volume were
+untouched:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get pods
+NAME                 READY     STATUS      RESTARTS   AGE
+python-web-5-49tsa   1/1       Running     0          2m
+python-web-5-s8yni   1/1       Running     0          2m
+
+$ oc rsh python-web-5-49tsa
+sh-4.2$ ls /demo-2
+test
+sh-4.2$ cat /demo-2/test
+Hello World
+sh-4.2$</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pv-release">Releasing a Persistent Volume</h3>
+<div class="paragraph">
+<p>The example above demonstrates that removing a volume does not release the
+volume nor delete its contents. That requires another step. Remember that
+claims are resources, similar to routes or deployment configurations, and
+can be deleted in the same fashion (using the updated name from the reattach
+example):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc volume dc python-web --remove --name demo-vol-2
+deploymentconfigs/python-web
+
+$ oc delete pvc pvc-axv7b
+persistentvolumeclaim "pvc-axv7b" deleted</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Listing the claims for the user shows none allocated:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get pvc</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The cluster administrator shows that the previously bound volume is now free:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get pv
+NAME      CAPACITY   ACCESSMODES   STATUS      CLAIM     REASON    AGE
+pv01      10Gi       RWO,RWX       Available                       39d
+pv02      10Gi       RWO,RWX       Available                       39d
+pv03      10Gi       RWO,RWX       Available                       39d
+pv04      10Gi       RWO,RWX       Available                       39d
+pv05      10Gi       RWO,RWX       Available                       39d</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="integration">Integrating with OpenShift</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While it is simple to <a href="#deployment">deploy an image on OpenShift</a>,
+there are certain guidelines and integration techniques that should be
+adhered to.</p>
+</div>
+<div class="sect2">
+<h3 id="creating-images">Creating Images</h3>
+<div class="paragraph">
+<p>The OpenShift documentation contains a section on
+<a href="https://docs.openshift.com/container-platform/latest/creating_images/guidelines.html">image creation guidelines</a>,
+so rather than repeat that information here, it&#8217;s recommended to be familiar
+with the practices in that document. Points of particular interest will be
+included in the rest of this guide.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="recommended-practices">Recommended Practices</h3>
+<div class="paragraph">
+<p>There are some recommended practices for your images to ensure full compatibility with Red Hat Products.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Containers should not run as root.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Containers running as root represent a security vulnerability as a process that breaks out of the container will retain root privileges on the host system.</p>
+</li>
+<li>
+<p>Containers run as root by default - More information on users can be found <a href="#users">here</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Containers should not request host-level privileges.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Containers requiring host-level privileges may not function correctly in all environments - namely those that the application deployer does not have full control over the host system.</p>
+</li>
+<li>
+<p>OpenShift Online and OpenShift Dedicated do not support privileged containers.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Containers should use a Red Hat provided base image. They should also not modify content provided by Red Hat packages or layers.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The following dockerfile snippet shows a way to to build an image on rhel.</p>
+<div class="listingblock">
+<div class="content">
+<pre>FROM registry.access.redhat.com/rhel7</pre>
+</div>
+</div>
+</li>
+<li>
+<p>This ensures that the application&#8217;s runtime dependencies are fully supported by Red Hat.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="env-var">Environment Variables</h3>
+<div class="paragraph">
+<p>It is impractical to rebuild an image for each possible configuration,
+especially if the image is owned by someone else. The recommended mechanism
+for configuring a service running in a container is through environment
+variables.</p>
+</div>
+<div class="paragraph">
+<p>Environment variables are set in the deployment configuration. They can be
+set when the configuration is first created or can be added/modified/removed
+after an application has been deployed. It is important to realize that
+changes to the environment variables constitute a deployment configuration
+change. The existing pods are not modified; rather, new pods are deployed with
+the changed configuration and will automatically replace the existing ones
+(this is easily seen on the UI overview page with the graphical depictions of
+scaling up and down).</p>
+</div>
+<div class="paragraph">
+<p>This paradigm is used both for images created for deployment as well as those
+intended to be used as builder images with
+<a href="#source-to-image">source to image</a>. For example,
+the Python builder image will, by default, attempt to run a file named
+<code>app.py</code>. If an application cannot be modified to use this naming scheme,
+the environment variable <code>APP_FILE</code> can be specified to indicate a new
+script to run when the container is launched.</p>
+</div>
+<div class="sect3">
+<h4 id="_example_5">Example</h4>
+<div class="paragraph">
+<p>Below is the output for the deployment configuration of a simple web
+application. The application is written such that it will output "Hello
+World" when it is not overridden with environment variables.</p>
+</div>
+<div class="paragraph">
+<p>As a reminder, the list of a particular resource can be viewed using the
+<code>get</code> command, followed by the resource type in question (<code>dc</code> is an
+abbreviaton for deployment configuration):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get dc
+NAME         REVISION   DESIRED   CURRENT   TRIGGERED BY
+python-web   3          1         1         config,image(python-web:latest)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The details of the configuration can be displayed with the <code>describe</code>
+command (some of the irrelevant information has been removed for brevity):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc describe dc python-web
+Name:        python-web
+Namespace:   python-web
+Created:     10 days ago
+Labels:      app=python-web
+Annotations: openshift.io/generated-by=OpenShiftNewApp
+Latest Version:   3
+Selector:    app=python-web,deploymentconfig=python-web
+Replicas:    1
+Triggers:    Config, Image(python-web@latest, auto=true)
+Strategy:    Rolling
+Template:
+    Labels:    app=python-web
+    deploymentconfig=python-web
+    Annotations:   openshift.io/container.python-web.image.entrypoint=["/bin/sh","-c","cd /src/www; /bin/bash -c 'python3 -u /src/web.py'"]
+    openshift.io/generated-by=OpenShiftNewApp
+    Containers:
+    python-web:
+        Image:                 jdob/python-web@sha256:3f87be1825405ee8c7da23d7a6916090ecbb2d6e7b04fcd0fd1dc194173d2bc0
+        Port:                  8080/TCP
+        Volume Mounts:         &lt;none&gt;
+        Environment Variables: &lt;none&gt;
+    No volumes.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that there are no environment variables set for the application. Viewing
+the application (through its route), displays the default "Hello World" text:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get route
+NAME         HOST/PORT                                    PATH      SERVICES     PORT       TERMINATION
+python-web   python-web-python-web.apps.10.2.2.2.xip.io             python-web   8080-tcp
+
+$ curl http://python-web-python-web.apps.10.2.2.2.xip.io
+Hello World</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are a few options for editing environment variables. The UI can be
+used to navigate to the deployment configuration. The "Environment" tab
+can be used to view and modify environment variables for the configuration.
+When changes are saved by pressing the "Save" button, a new deployment
+is triggered using the new configuration values.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/env_variables.png" alt="env variables">
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, the CLI&#8217;s <code>edit</code> command can be used to interactively edit
+the YAML representation of many resources. This command, called by specifying
+a resource type and name, opens a text editor in which changes can be made.
+When the file is saved and the editor is closed, the changes are sent to
+the server and the appropriate action is taken. In this case, the change in
+configuration will cause a redeployment.</p>
+</div>
+<div class="paragraph">
+<p>Below is a snippet of the deployment configuration while being edited
+(removed sections are replaced with <code>[snip]</code> for readability). The
+changes made are highlighted:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc edit dc python-web
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+    [snip]
+spec:
+    [snip]
+    template:
+    metadata:
+        [snip]
+    spec:
+        containers:
+        - env:
+        - name: TEXT <i class="conum" data-value="1"></i><b>(1)</b>
+          value: Goodbye World <i class="conum" data-value="1"></i><b>(1)</b>
+        image: jdob/python-web@sha256:3f87be1825405ee8c7da23d7a6916090ecbb2d6e7b04fcd0fd1dc194173d2bc0
+        imagePullPolicy: Always
+        name: python-web</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A new environment variable named <code>TEXT</code> is introduced into the container.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If present, the value of the <code>TEXT</code> variable is output by the web server when
+it is accessed. For reference, the relevant Python line in the application is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-python" data-lang="python">m = os.environ.get('TEXT', None) or 'Hello World'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At this point, there are a few ways to monitor the changes being made. The
+UI presents a graphical view of the existing pods scaling down while new ones
+are created with the new configuration. The CLI&#8217;s <code>status</code> command can be
+used to show that a new deployment was made:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc status                                                                                                                                                                        1 ↵
+In project python-web on server https://localhost:8443
+
+http://python-web-python-web.apps.10.2.2.2.xip.io to pod port 8080-tcp (svc/python-web)
+    dc/python-web deploys istag/python-web:latest
+    deployment #2 deployed 9 minutes ago - 1 pod
+    deployment #1 deployed 48 minutes ago</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that a new deployment was made, corresponding to the updated deployment
+configuration that was submitted. As proof of the environment variable&#8217;s
+presence in the container, the previous <code>curl</code> command can be run again:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ curl http://python-web-python-web.apps.10.2.2.2.xip.io
+Goodbye World</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="users">Users</h3>
+<div class="paragraph">
+<p>One of the more common obstacles encountered with creating new images
+revolves around the user running the container process. By default, Docker
+containers are run as root. This can become a
+<a href="http://blog.dscpl.com.au/2015/12/don-run-as-root-inside-of-docker.html">security issue</a>
+as any process that breaks out of the container will retain the same privileges
+on the host machine; root in a container would have access to root on the host.</p>
+</div>
+<div class="paragraph">
+<p>By default, OpenShift will issue a warning when loading an image defined to
+run as root and, in many cases, the deployment will fail with some form of
+permission error. These failures are due to the fact that OpenShift creates a
+random, non-privileged user (with no corresponding UID on the host machine)
+and runs the container with that user. This is an added security benefit
+provided by OpenShift and, while not difficult, must be acknowledged when
+creating images.</p>
+</div>
+<div class="paragraph">
+<p>Since OpenShift is generating a random UID, the solution isn&#8217;t as simple as
+<a href="http://blog.dscpl.com.au/2015/12/overriding-user-docker-containers-run-as.html">creating and using a user</a>
+(by its name) within the container. There are potential security issues
+where a created user can still give itself root privileges. The use of a
+random ID, specified by OpenShift, also supports added security for
+multi-tenancy by forcing persistent storage volume UIDs to be unique for each
+project.</p>
+</div>
+<div class="paragraph">
+<p>In short, since OpenShift runs containers as a randomized, non-privileged user,
+the image must be constructed with those limitations in mind.</p>
+</div>
+<div class="paragraph">
+<p>The common solution is to make the necessary files and directories
+<a href="http://blog.dscpl.com.au/2015/12/random-user-ids-when-running-docker.html">writable by the root group</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_example_6">Example</h4>
+<div class="paragraph">
+<p>Below is a snippet from a Dockerfile used to run httpd as a non-privileged
+container. This setup will host pages from the <code>/opt/app-root</code> directory.
+For brevity, the Dockerfile <code>EXPOSE</code> and corresponding
+httpd configuration changes to serve on a non-privileged port are not
+included in the snippet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash"># Create a non root account called 'default' to be the owner of all the
+# files which the Apache httpd server will be hosting. This account
+# needs to be in group 'root' (gid=0) as that is the group that the
+# Apache httpd server would use if the container is later run with a
+# unique user ID not present in the host account database, using the
+# command 'docker run -u'.
+
+ENV HOME=/opt/app-root
+
+RUN mkdir -p ${HOME} &amp;&amp; \
+    useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \ <i class="conum" data-value="1"></i><b>(1)</b>
+            -c "Default Application User" default
+
+# Fixup all the directories under the account so they are group writable
+# to the 'root' group (gid=0) so they can be updated if necessary, such
+# as would occur if using 'oc rsync' to copy files into a container.
+
+RUN chown -R 1001:0 /opt/app-root &amp;&amp; \
+    find ${HOME} -type d -exec chmod g+ws {} \; <i class="conum" data-value="2"></i><b>(2)</b>
+
+# Ensure container runs as non root account from its home directory.
+WORKDIR ${HOME}
+USER 1001 <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The user is created through a numeric ID.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Group permissions are given to the necessary directories.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Indicate that the image should be run as the non-root user.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Note the usage of a numeric UID instead of the named user. This is done for
+portability across hosting providers and will pass checks to ensure that,
+at very least, the container is not being run as root (this check is
+impossible using named users).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="labels">Labels</h3>
+<div class="paragraph">
+<p>In this context, labels refer to the Docker concept of labels: metadata
+on an image. These are specified in the Dockerfile and are included in the
+built image.</p>
+</div>
+<div class="paragraph">
+<p>Partner container certification requires that images include the following
+labels:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name</p>
+</li>
+<li>
+<p>vendor</p>
+</li>
+<li>
+<p>version</p>
+</li>
+<li>
+<p>release</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The container partner team provides a sample Dockerfile that can be used
+as a template for images suitable for certification. It can be found
+on
+<a href="https://github.com/RHsyseng/container-rhel-examples/blob/master/starter/Dockerfile">GitHub</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_example_7">Example</h4>
+<div class="paragraph">
+<p>The following snippet uses the Dockerfile <code>LABEL</code> directive to define
+the minimum required labels:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-Dockerfile" data-lang="Dockerfile">LABEL name="jdob/python-web" \
+      vendor="Red Hat" \
+      version="1.0" \
+      release="1"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The labels can be viewed using the <code>docker inspect</code> command (the output
+below is truncated:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ docker inspect --format {{.ContainerConfig.Labels}} jdob/python-web
+map[name:jdob/python-web release:1 vendor:Red Hat version:1.0]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="api-auth">Authenticating to the OpenShift APIs</h3>
+<div class="paragraph">
+<p>Service accounts may be used to authenticate against the OpenShift API without
+the need to use a regular user&#8217;s credentials. This can be used for
+integrations that require extra information about the running system in which
+they are deployed, such as for discovery or monitoring purposes. Service
+accounts are identified by a username and its roles can be manipulated
+in the same way.</p>
+</div>
+<div class="paragraph">
+<p>In order to properly configure permissions for a service account, some
+understanding of the security role system is required.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scc">Security Context Constraints</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Operations on security context constraints can only be performed
+by an admin user, including listing or describing existing SCCs.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Security Context Constraints (SCC for short) define a set of access
+permissions. Users and service accounts are added to SCCs to permit them
+the privileges defined by the SCC.</p>
+</div>
+<div class="paragraph">
+<p>A list of all defined SCCs can be retrieved using the <code>get</code> command and
+the <code>scc</code> resource type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">NAME               PRIV      CAPS      SELINUX     RUNASUSER          FSGROUP     SUPGROUP    PRIORITY   READONLYROOTFS   VOLUMES
+anyuid             false     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    10         false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
+hostaccess         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    &lt;none&gt;     false            [configMap downwardAPI emptyDir hostPath persistentVolumeClaim secret]
+hostmount-anyuid   false     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    &lt;none&gt;     false            [configMap downwardAPI emptyDir hostPath nfs persistentVolumeClaim secret]
+hostnetwork        false     []        MustRunAs   MustRunAsRange     MustRunAs   MustRunAs   &lt;none&gt;     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
+nonroot            false     []        MustRunAs   MustRunAsNonRoot   RunAsAny    RunAsAny    &lt;none&gt;     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
+privileged         true      []        RunAsAny    RunAsAny           RunAsAny    RunAsAny    &lt;none&gt;     false            [*]
+restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    &lt;none&gt;     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Specific details are displayed using the <code>describe</code> command. Below is the
+output for the default <code>restricted</code> SCC:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">Name:                        restricted
+Priority:                    &lt;none&gt;
+Access:
+    Users:                     &lt;none&gt;
+    Groups:                    system:authenticated
+Settings:
+    Allow Privileged:              false
+    Default Add Capabilities:      &lt;none&gt;
+    Required Drop Capabilities:    KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
+    Allowed Capabilities:          &lt;none&gt;
+    Allowed Volume Types:          configMap,downwardAPI,emptyDir,persistentVolumeClaim,secret
+    Allow Host Network:            false
+    Allow Host Ports:              false
+    Allow Host PID:                false
+    Allow Host IPC:                false
+    Read Only Root Filesystem:     false
+    Run As User Strategy: MustRunAsRange
+    UID:                     &lt;none&gt;
+    UID Range Min:           &lt;none&gt;
+    UID Range Max:           &lt;none&gt;
+    SELinux Context Strategy: MustRunAs
+    User:                    &lt;none&gt;
+    Role:                    &lt;none&gt;
+    Type:                    &lt;none&gt;
+    Level:                   &lt;none&gt;
+    FSGroup Strategy: MustRunAs
+    Ranges:                  &lt;none&gt;
+    Supplemental Groups Strategy: RunAsAny
+    Ranges:                  &lt;none&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The SCC description includes information on what is permitted to users in the
+SCC. The <code>Access</code> section indicates which users are granted access to the
+SCC. Note that service accounts are treated as users in this context and
+will appear in this list as well.</p>
+</div>
+<div class="paragraph">
+<p>Users are granted access to an SCC through the admin policy (<code>adm policy</code>)
+command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc adm policy add-scc-to-user restricted onboard
+
+$ oc describe scc restricted
+Name:                    restricted
+Priority:                &lt;none&gt;
+Access:
+    Users:                 onboard
+    Groups:                system:authenticated
+[output truncated]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="service-accounts">Service Accounts</h3>
+<div class="paragraph">
+<p>Service accounts exist within the scope of a particular project. Given that,
+cluster admin privileges are not required. Like other API objects, they are
+created and deleted through the <code>create</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc create serviceaccount onboard-sa
+serviceaccount "onboard-sa" created
+
+$ oc get sa
+NAME         SECRETS   AGE
+builder      2         &lt;invalid&gt;
+default      2         &lt;invalid&gt;
+deployer     2         &lt;invalid&gt;
+onboard-sa   2         &lt;invalid&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the example above, the service account will be created in the currently
+active project. A different project may be specified using the <code>-n</code> flag.</p>
+</div>
+<div class="paragraph">
+<p>All projects are configured with three default service accounts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>builder</strong> - Build pods use this SCC to push images into the internal
+Docker registry and manipulate image streams.</p>
+</li>
+<li>
+<p><strong>deployer</strong> - Used to view and edit replication controllers.</p>
+</li>
+<li>
+<p><strong>default</strong> - Used to run all non-builder pods unless explicitly overridden.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Service accounts can be added to SCCs in the same way as users with one
+notable exception. The username for the service account must be fully qualified
+as a service account and identifying the project in which it exists. The
+template for the user name is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">system:serviceaccount:&lt;project&gt;:&lt;sa-name&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, to add the previously created service account (assuming it was
+under the project name <code>demo</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc adm policy add-scc-to-user restricted system:serviceaccount:demo:onboard-sa
+
+$ oc describe scc restricted
+Name:                    restricted
+Priority:                &lt;none&gt;
+Access:
+    Users:                 system:serviceaccount:demo:onboard-sa
+    Groups:                system:authenticated</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_authenticating_as_a_service_account">Authenticating as a Service Account</h3>
+<div class="paragraph">
+<p>There are two ways to retrieve an API token for the service account.</p>
+</div>
+<div class="sect3">
+<h4 id="_externally_retrieving_a_token">Externally Retrieving a Token</h4>
+<div class="paragraph">
+<p>The <code>describe</code> command can be used to show the tokens that were created
+for a service account:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc describe sa onboard-sa                                                                                                                                                        1 ↵
+Name:		onboard-sa
+Namespace:	guestbook
+Labels:		&lt;none&gt;
+
+Image pull secrets:	onboard-sa-dockercfg-myuk7
+
+Mountable secrets: 	onboard-sa-token-tuwfj
+                    onboard-sa-dockercfg-myuk7
+
+Tokens:            	onboard-sa-token-n79y5
+                    onboard-sa-token-tuwfj</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, the list <code>Tokens</code> is of interest. The token itself can be
+retrieved through the <code>describe</code> command for the secret (the actual
+token value is truncated for brevity):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc describe secret onboard-sa-token-n79y5                                                                                                                                        1 ↵
+Name:		onboard-sa-token-n79y5
+Namespace:	guestbook
+Labels:		&lt;none&gt;
+Annotations:	kubernetes.io/service-account.name=onboard-sa
+        kubernetes.io/service-account.uid=efe81599-bd6f-11e6-b14e-5254009f9a8b
+
+Type:	kubernetes.io/service-account-token
+
+Data
+====
+ca.crt:		1066 bytes
+namespace:	9 bytes
+token:		eyJhbGciOi...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Assuming the token value is saved to an environment variable named <code>TOKEN</code>,
+the list of users can be retrieved with the following <code>curl</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ TOKEN="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)"
+$ curl -k "https://10.1.2.2:8443/oapi/v1/users/~" -H "Authorization: Bearer $TOKEN"                                                                                                 1 ↵
+    {
+      "kind": "User",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "system:serviceaccount:demo:onboard-sa",
+        "selfLink": "/oapi/v1/users/system:serviceaccount:demo:onboard-sa",
+        "creationTimestamp": null
+      },
+      "identities": null,
+      "groups": [
+        "system:serviceaccounts",
+        "system:serviceaccounts:demo"
+      ]
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_from_within_a_container">From Within a Container</h4>
+<div class="paragraph">
+<p>The API token for the service account associated with a deployment
+configuration is automatically injected into each container when it is
+created. The service account for a container can be changed from the default
+to an account with the proper permissions based on the need. The token
+is stored inside the container at:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">/var/run/secrets/kubernetes.io/serviceaccount/token</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using the same curl command as above:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ TOKEN="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)"
+$ curl -k "https://10.1.2.2:8443/oapi/v1/users/~" -H "Authorization: Bearer $TOKEN"                                                                                                 1 ↵
+    {
+      "kind": "User",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "system:serviceaccount:demo:default",
+        "selfLink": "/oapi/v1/users/system:serviceaccount:demo:default",
+        "creationTimestamp": null
+      },
+      "identities": null,
+      "groups": [
+        "system:serviceaccounts",
+        "system:serviceaccounts:demo"
+      ]
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This output was taken from a container with no additional configuration,
+so the self reference refers to the project&#8217;s <code>default</code> service account.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_8">Example</h4>
+<div class="paragraph">
+<p>An example PHP script using the container&#8217;s token to access the API of the
+OpenShift instance in which it is deployed can be
+<a href="https://github.com/jdob-openshift/php-token-demo">found on GitHub</a>.
+It can be built and deployed as a
+<a href="#source-to-image">source to image</a> application.</p>
+</div>
+<div class="paragraph">
+<p>While it is not practical to repeat the code here, there are a few sections
+of note.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-php" data-lang="php">$token_file = "/var/run/secrets/kubernetes.io/serviceaccount/token";
+$f = fopen($token_file, "r");
+$token = fread($f, filesize($token_file));
+fclose($f);
+$auth = "Authorization: Bearer $token";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The block above reads in the contents of the token file to use for
+authenticating against the API. The token is passed in the
+<code>Authentication: Bearer</code> header.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-php" data-lang="php">$url = "https://openshift.default.svc.cluster.local/oapi/v1/users/~";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The alias <code>openshift.default.svc.cluster.local</code> is made available to all
+containers by default and can be used to access the control plane for that
+container.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-php" data-lang="php">curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The API is run on HTTPS. For simplicity and portability of this example,
+verification of the SSL certificate is disabled. Extra steps may be
+necessary to provide the proper CA for the container.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="openshift-network-plugins">OpenShift Network Plugins</h3>
+<div class="paragraph">
+<p>For instances where the default network behaviour does not meet the user&#8217;s
+needs, OpenShift supports the same plugin model as
+<a href="https://kubernetes.io/docs/concepts/cluster-administration/network-plugins">Kubernetes</a>
+does for networking pods.</p>
+</div>
+<div class="sect3">
+<h4 id="_container_network_interfaces">Container Network Interfaces</h4>
+<div class="paragraph">
+<p>CNIs are the recommended method for usage of network plugins. Any external
+networking solution can be used to plumb networking for OpenShift as long as it
+follows the CNI spec. Then, OpenShift needs to be launched by setting the
+network plugin name to <code>cni</code>  in the master/node config yaml files:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>networkConfig:
+  networkPluginName: "cni"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When done through <a href="https://github.com/openshift/openshift-ansible">the Ansible installer</a>,
+specify <code>sdn_network_plugin_name=cni</code> as an option when installing OpenShift.
+The default behavior of the OpenShift Ansible installation allows a firewall
+passthrough for the VXLAN port (4789), so if a plugin needs other ports
+(for management/control/data) to be open, then the installer needs to be
+changed accordingly.</p>
+</div>
+<div class="paragraph">
+<p>More information about CNIs can be found in the
+<a href="http://kubernetes.io/docs/admin/network-plugins/#cni">Kubernetes documentation</a>
+and in the <a href="https://github.com/containernetworking/cni/blob/master/SPEC.md">CNI spec</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_requirements">Requirements</h4>
+<div class="paragraph">
+<p>OpenShift networking requires the following items to be kept in mind when
+writing CNI plugins in addition to the
+<a href="https://github.com/kubernetes/kubernetes/blob/release-1.3/docs/design/networking.md">basic Kubernetes requirements</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><span class="red">Red</span> items are not necessary for a functional OpenShift cluster, but some
+things will need to be worked around for the administrator&#8217;s benefit.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A plugin can follow the NetworkPolicy objects from Kubernetes and implement
+the user/admin intent on multi-tenancy. Alternatively, plugins can ignore
+multi-tenancy completely or implement a model where multi-tenancy is based on
+projects (i.e. Kubernetes namespaces), where:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each namespace should be treated like a tenant where its pods and services
+are isolated from another project&#8217;s pods/services</p>
+</li>
+<li>
+<p><span class="red">Support exists for operations like merge/join networks even when they
+belong to different namespaces</span></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Certain services in the cluster will be run as infrastructure services
+(e.g. load balancer, registry, DNS server). The plugin should allow for a
+'global' tenant which is-accessible-by/can-access all pods of the cluster.
+For example, a load balancer can run in two modes - private and global.
+The global load balancer should have access to all tenants/namespaces of the
+cluster. A private load balancer is one that is launched as a pod by a
+particular namespace, and this should obey tenant isolation rules.</p>
+</li>
+<li>
+<p><span class="red">Access to all pods from the host, which is particularly important if
+kube-proxy is used by the SDN solution to support Kubernetes services.
+Please note that iptables based kube-proxy will be enabled by default in
+OpenShift. This will have to be overridden specially if the plugin
+wants a different behaviour.</span></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The proxy can be disabled by giving the option <code>--disable proxy</code> to
+OpenShift&#8217;s node process. For example, the proxy may be disabled for the
+OpenShift node&#8217;s systemd service by adding the option
+<code>OPTIONS="--loglevel=2 --disable proxy"</code> to the sysconfig file
+(<code>/etc/sysconfig/origin-node</code> in case of origin).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Access to external networks by pods whether through NAT or direct access.</p>
+</li>
+<li>
+<p>OpenShift builds docker images as part of the developer workflow. The build
+is run through the <code>docker build</code> call. This means that docker&#8217;s default
+networking will be invoked for this container (CNI/kube-plugin will not run as
+this is not a pod). These containers still need a network and access to an
+external network.</p>
+</li>
+<li>
+<p><span class="red">Respect the <code>PodSecurityContext::HostNetwork=true</code> setting for
+infrastructure pods. Another option is to provide an externally routable IP
+address to the pod. This is used for the load balancer pods which are the entry
+point for all external traffic funneling into the cluster.</span></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Note that the HostPort &#8592;&#8594; ContainerPort mapping will not be available by
+default if the CNI plugin is enabled (as the default docker networking is
+turned off). The plugin will have to implement this functionality on its own.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="anatomy">Anatomy of a Project</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>More information on the <code>get</code> and <code>describe</code> commands that are used in
+this guide can be found in the <a href="#resource-query-commands">Resource Query Commands</a> section.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When applications are deployed, either directly from an image or built using
+<a href="#term-source-to-image">source to image</a>, there are a number of
+resources that OpenShift creates to support the application.</p>
+</div>
+<div class="sect2">
+<h3 id="_image_stream">Image Stream</h3>
+<div class="paragraph">
+<p>If an existing <a href="#image-stream">image stream</a> is not found, OpenShift
+will create one. The image stream is used to provide images when creating new
+containers. Additionally, triggers can be created to automatically react to changes
+in an image stream contents and roll out updated pods.</p>
+</div>
+<div class="paragraph">
+<p>The type name <code>imagestreams</code> (or <code>is</code> for short) is used with CLI query
+commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get is
+NAME         DOCKER REPO                                TAGS      UPDATED
+python-web   172.30.53.244:5000/python-web/python-web   latest    50 minutes ago</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the output above, the <code>172.30.53.244</code> address corresponds to the internal
+Docker registry created and managed by the OpenShift installation. It runs
+in a container under the <code>default</code> project, which can be accessed by a user
+with cluster admin privileges:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc project default
+Now using project "default" on server "https://localhost:8443".
+
+$ oc get services
+NAME              CLUSTER-IP       EXTERNAL-IP   PORT(S)                   AGE
+docker-registry   172.30.53.244    &lt;none&gt;        5000/TCP                  20d
+kubernetes        172.30.0.1       &lt;none&gt;        443/TCP,53/UDP,53/TCP     20d
+router            172.30.198.186   &lt;none&gt;        80/TCP,443/TCP,1936/TCP   20d</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More information about the created input stream can be viewed using the
+<code>describe</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc describe is python-web
+Name:             python-web
+Namespace:        python-web
+Created:          56 minutes ago
+Labels:           app=python-web
+Annotations:		openshift.io/generated-by=OpenShiftNewApp
+                openshift.io/image.dockerRepositoryCheck=2016-10-14T15:05:43Z
+Docker Pull Spec: 172.30.53.244:5000/python-web/python-web
+Unique Images:    1
+Tags:             1
+
+latest
+tagged from jdob/python-web
+
+* jdob/python-web@sha256:3f87be1825405ee8c7da23d7a6916090ecbb2d6e7b04fcd0fd1dc194173d2bc0
+    56 minutes ago</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_replication_controller">Replication Controller</h3>
+<div class="paragraph">
+<p>A <a href="#rc">replication controller</a> is created when an application is
+deployed and is used to control the number of running pods. Each application
+deployment gets its own replication controller.</p>
+</div>
+<div class="paragraph">
+<p>The resource type <code>replicationcontrollers</code> (or <code>rc</code> for short) is used
+with the CLI query commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get rc
+NAME           DESIRED   CURRENT   AGE
+python-web-1   1         1         1h</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>describe</code> command displays extra information, including details on the
+image used to provision and details on the running and desired pods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc describe rc python-web
+Name:           python-web-1
+Namespace:      python-web
+Image(s):       jdob/python-web@sha256:3f87be1825405ee8c7da23d7a6916090ecbb2d6e7b04fcd0fd1dc194173d2bc0
+Selector:       app=python-web,deployment=python-web-1,deploymentconfig=python-web
+Labels:         app=python-web
+                openshift.io/deployment-config.name=python-web
+Replicas:       1 current / 1 desired
+Pods Status:    1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+No volumes.
+No events.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deployment_configuration">Deployment Configuration</h3>
+<div class="paragraph">
+<p>The next level up is the <a href="#dc">deployment configuration</a> which describes
+when and how deployments of the application will be run.</p>
+</div>
+<div class="paragraph">
+<p>The resource type <code>deploymentconfigs</code> (or <code>dc</code> for short) is used with
+the CLI query commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get dc
+NAME         REVISION   DESIRED   CURRENT   TRIGGERED BY
+python-web   1          1         1         config,image(python-web:latest)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Information on the deployment&#8217;s triggers and update strategy, as well as
+details on deployments done using the configuration, are displayed by the
+<code>describe</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc describe dc
+Name:           python-web
+Namespace:      python-web
+Created:        2 hours ago
+Labels:         app=python-web
+Annotations:    openshift.io/generated-by=OpenShiftNewApp
+Latest Version: 1
+Selector:       app=python-web,deploymentconfig=python-web
+Replicas:       1
+Triggers:       Config, Image(python-web@latest, auto=true)
+Strategy:       Rolling
+Template:
+Labels:       app=python-web
+                deploymentconfig=python-web
+Annotations:  openshift.io/container.python-web.image.entrypoint=["/bin/sh","-c","cd /src/www; /bin/bash -c 'python3 -u /src/web.py'"]
+                openshift.io/generated-by=OpenShiftNewApp
+Containers:
+    python-web:
+    Image:                      jdob/python-web@sha256:3f87be1825405ee8c7da23d7a6916090ecbb2d6e7b04fcd0fd1dc194173d2bc0
+    Port:                       8080/TCP
+    Volume Mounts:              &lt;none&gt;
+    Environment Variables:      &lt;none&gt;
+No volumes.
+
+Deployment #1 (latest):
+    Name:           python-web-1
+    Created:        2 hours ago
+    Status:         Complete
+    Replicas:       1 current / 1 desired
+    Selector:       app=python-web,deployment=python-web-1,deploymentconfig=python-web
+    Labels:         app=python-web,openshift.io/deployment-config.name=python-web
+    Pods Status:    1 Running / 0 Waiting / 0 Succeeded / 0 Failed</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_service">Service</h3>
+<div class="paragraph">
+<p>The last layer of interest is the created <a href="#service">service</a>. The
+service acts as the entry point into the running application, taking care of
+distributing requests to the appropriate pod.</p>
+</div>
+<div class="paragraph">
+<p>The resource type <code>services</code> is used with the CLI query commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc get services
+NAME         CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+python-web   172.30.167.215   &lt;none&gt;        8080/TCP   1h</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Details about a service include the internal IP address and ports in use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-bash" data-lang="bash">$ oc describe service python-web
+Name:             python-web
+Namespace:        python-web
+Labels:           app=python-web
+Selector:         app=python-web,deploymentconfig=python-web
+Type:             ClusterIP
+IP:               172.30.167.215
+Port    :         8080-tcp    8080/TCP
+Endpoints:        172.17.0.12:8080
+Session Affinity:	None
+No events.</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="terminology">Terminology</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="bc">build configuration</h3>
+<div class="paragraph">
+<p>A build configuration describes a single build definition and a set of
+triggers for when a new build should be created.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="container">container</h3>
+<div class="paragraph">
+<p>The fundamental piece of an OpenShift application is a container. A
+container is a way to isolate and limit process interactions with minimal
+overhead and footprint. In most cases, a container will be limited to
+a single process providing a specific service (e.g. web server, database).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dc">deployment configuration</h3>
+<div class="paragraph">
+<p>A deployment configuration contains the details of a particular application
+deployment:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The configuration used in the <a href="#rc">replication controller</a> definition,
+such as the number of replicas to ensure</p>
+</li>
+<li>
+<p>Triggers for automatically performing an updated deployment, such as
+when an image is tagged or the source code in a <a href="#source-to-image">source-to-image</a>
+deployment is changed</p>
+</li>
+<li>
+<p>The strategy for transitioning between deployments when upgrading</p>
+</li>
+<li>
+<p>Lifecycle hooks</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="image">image</h3>
+<div class="paragraph">
+<p>An image is a pre-built, binary file that contains all of the necessary
+components to run a single container; a container is the working
+instantiation of an image. Additionally, an image defines certain
+information on how to interact with containers created from the image,
+such as what ports are exposed by the container.</p>
+</div>
+<div class="paragraph">
+<p>OpenShift uses the same image format as Docker; existing Docker images
+can easily be used to build containers through OpenShift. Additionally,
+OpenShift provides a number of ways to build images, either from a
+Dockerfile or directly from source hosted in a git repository.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="image-stream">image stream</h3>
+<div class="paragraph">
+<p>An image stream is a series of Docker images identified by one or more
+tags. Image streams are capable of aggregating images from a variety
+of sources into a single view, including</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Images stored in OpenShift&#8217;s integrated Docker repository</p>
+</li>
+<li>
+<p>Images from external Docker registries</p>
+</li>
+<li>
+<p>Other image streams</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pod">pod</h3>
+<div class="paragraph">
+<p>Pods come from the Kubernetes concept of the same name. A pod is a set of
+one or more containers deployed together to act as if they are on a single
+host, sharing an internal IP, ports, and local storage.</p>
+</div>
+<div class="paragraph">
+<p>It is important to realize that OpenShift treats pods as immutable. Any
+changes, be it the underlying image, pod configuration, or environment
+variable values, cause new pods to be created and phase out the existing
+pods. Being immutable also means that any state is not maintained between
+pods when they are recreated.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="project">project</h3>
+<div class="paragraph">
+<p>An OpenShift project corresponds to a Kubernetes <strong>namespace</strong>. They are
+used to organize and group objects in the system, such as services and
+deployment configurations, as well as provide security policies specific
+to those resources.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rc">replication controller</h3>
+<div class="paragraph">
+<p>A replication controller is used to ensure a specified number of
+pods for an application are running at a given time. The replication
+controller automatically reacts to changes to deployed pods, both the
+removal of existing pods (deletion, crashing, etc.) or the addition of
+extra pods that are not desired. The pods are automatically added or
+removed from the service to ensure its uptime.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="route">route</h3>
+<div class="paragraph">
+<p>A route is the method to access a service through a hostname.
+By default, services are only accessible by other pods within the
+project. A route is created, or <strong>exposed</strong>, and configured to make
+the service publicly accessible through a hostname and optional
+secure communications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="service">service</h3>
+<div class="paragraph">
+<p>A service functions as a load balancer and proxy to underlying pods.
+Services are assigned IP addresses and ports and will delegate requests
+to an appropriate pod that can field it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="source-to-image">source-to-image</h3>
+<div class="paragraph">
+<p>Source-to-image is a feature that allows OpenShift to build a Docker
+image from a source code repository. An application is created within a
+project that includes a URL to the repository and an optional builder
+image to base the build on. Web hooks may also be configured to trigger
+OpenShift to build a new image when the source repository is modified.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="involved">Getting Involved</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are a number of ways to engage with the OpenShift teams and begin
+to promote new integrations and ideas.</p>
+</div>
+<div class="sect2">
+<h3 id="commons">Commons</h3>
+<div class="paragraph">
+<p><a href="https://commons.openshift.org/">OpenShift Commons</a> provides a community for partners, users, customers, and contributors to build connections
+and share best practices, facilitating collaboration and awareness of project involvement with OpenShift.
+Additionally, regular <a href="https://commons.openshift.org/briefings.html">briefings</a> are hosted and allow for deeper dives
+into various topics.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="primed">Primed</h3>
+<div class="paragraph">
+<p>Red Hat OpenShift Primed is a technical readiness designation that acknowledges
+the first steps of an ISV&#8217;s technology working with OpenShift by providing the ISV a
+designated logo and awareness through OpenShift online properties such as
+<a href="https://hub.openshift.com/">Hub</a> and <a href="https://commons.openshift.org/">OpenShift Commons</a>.
+To earn this designation, ISVs must demonstrate an initial commitment to OpenShift.</p>
+</div>
+<div class="paragraph">
+<p>To sign up for the program, visit <a href="https://www.openshift.com/primed" class="bare">https://www.openshift.com/primed</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click on Apply Now.</p>
+</li>
+<li>
+<p>Sign in with GitHub to get access to the Primed application.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/sign_in.png" alt="sign in">
+</div>
+</div>
+</li>
+<li>
+<p>The Primed application:</p>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<strong><em>Name</em></strong>
+</td>
+<td class="hdlist2">
+<p>Name of the company or organization</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<strong><em>Summary</em></strong>
+</td>
+<td class="hdlist2">
+<p>Information about OpenShift integration</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<strong><em>More Information URL</em></strong>
+</td>
+<td class="hdlist2">
+<p>Link to organization web page</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<strong><em>Evidence of integration</em></strong>
+</td>
+<td class="hdlist2">
+<p>Demonstration of the integration -
+blog entries, how-to guides, source code, or videos will satisfy the
+requirement.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<strong><em>Primed For</em></strong>
+</td>
+<td class="hdlist2">
+<p>OpenShift offering</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<strong><em>Version Number</em></strong>
+</td>
+<td class="hdlist2">
+<p>OpenShift version number the integration was tested
+against</p>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="openshift-blog">OpenShift Blog</h3>
+<div class="paragraph">
+<p>The <a href="https://blog.openshift.com/">OpenShift Blog</a> hosts posts on a
+variety of topics. In particular, the
+<a href="https://blog.openshift.com/category/openshift-ecosystem/">ecosystem</a> tag
+highlights posts written by ISV teams to showcase their integrations.
+Partners in the Primed program have the opportunity to submit entries to be
+hosted on this blog to showcase their integrations.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="red-hat-connect">Red Hat Connect</h3>
+<div class="paragraph">
+<p>A natural progression from the Primed program is <a href="https://connect.redhat.com/">Red Hat Connect for Technical Partners</a>.</p>
+</div>
+<div class="paragraph">
+<p>The program is designed to assist companies who are actively seeking to develop, test, certify and support their products and solutions with the Red Hat portfolio.
+Participants in the program will gain access to a strong ecosystem of companies that are building software, hardware and cloud-based solutions for enterprise customers across the world.</p>
+</div>
+<div class="paragraph">
+<p>Partners developing solutions for OpenShift should apply for access to the <a href="https://connect.redhat.com/zones/containers">containers zone</a>. All members of the program are required certify their images
+to gain access to the ecosystem.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="certification">Certification</h3>
+<div class="paragraph">
+<p>Red Hat Container Certification is available for software vendors that offer commercial
+applications packaged and distributed as containers. The certification process is intended to help ensure that applications are
+built and packaged according to Red Hat&#8217;s enterprise standards.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the practices outlined under <a href="#recommended-practices">recommended practices</a>, software vendors should ensure that their containers meet the following requirements.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Images should contain a directory named <code>/licenses</code> that holds all relevant licensing information.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>End users should be aware of the terms and conditions applicable to the image.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Image dockerfiles should contain the following labels:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>name</p>
+</li>
+<li>
+<p>vendor</p>
+</li>
+<li>
+<p>version</p>
+</li>
+<li>
+<p>release</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Images should contain a help file as outlined <a href="http://docs.projectatomic.io/container-best-practices/#_creating_a_help_file">here</a>.</p>
+</li>
+<li>
+<p>Images should have a tag other than latest so that they can be uniquely identified.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The policy describing these standards can be found <a href="https://connect.redhat.com/zones/containers/container-certification-policy-guide#good_layer_count">here</a> (Red Hat Connect login required).</p>
+</div>
+<div class="paragraph">
+<p>Red Hat Partner Engineering mantains an example Dockerfile <a href="https://github.com/RHsyseng/container-rhel-examples/blob/master/starter/Dockerfile">here</a> which hits all the basic requirements for certification.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-10-02 13:46:07 EDT
+</div>
+</div>
+</body>
+</html>
