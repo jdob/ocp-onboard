@@ -171,8 +171,17 @@ section below.
 ansible-playbook -i ./inventory.erb openshift-ansible/playbooks/byo/config.yml
 ----
 
++
+IMPORTANT: For the new version try ansible-playbook -i ./inventory.erb openshift-ansible/playbooks/deploy_cluster.yml
+
 The installation will run, displaying the typical ansible output. The first
 installation will take longer as the nodes are initially prepared.
+
+[NOTE]
+====
+Download the openshift client (cli) and docker. Make sure that the client version that you downloaded
+can cluster up v3.6 cluster and above and that the docker version is appropriate for openshift.  
+====
 
 Once installed, the only user that exists in the system is the `system:admin`
 user. The installer adds the necessary token to the `.kubeconfig` file of
