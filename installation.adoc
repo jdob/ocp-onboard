@@ -168,11 +168,8 @@ section below.
 +
 [source,bash,options="nowrap"]
 ----
-ansible-playbook -i ./inventory.erb openshift-ansible/playbooks/byo/config.yml
+ansible-playbook -i ./inventory.erb openshift-ansible/playbooks/deploy_cluster.yml
 ----
-
-+
-IMPORTANT: For the new version try ansible-playbook -i ./inventory.erb openshift-ansible/playbooks/deploy_cluster.yml
 
 The installation will run, displaying the typical ansible output. The first
 installation will take longer as the nodes are initially prepared.
