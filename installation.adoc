@@ -120,6 +120,17 @@ section of the OpenShift documentation.
 yum -y install epel-release
 ----
 
+[NOTE]
+====
+if you get the following error message "ansible installer cannot find baseurl for repo base/7/x86_64 issue",
+it is a DNS issue. Try these commands:
+[source,bash,options="nowrap"]
+----
+ONBOOT=no
+dhclient
+----
+====
+
 . Optional but recommended: Update the newly installed system:
 +
 [source,bash,options="nowrap"]
