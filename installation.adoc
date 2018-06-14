@@ -176,8 +176,8 @@ installation will take longer as the nodes are initially prepared.
 
 [NOTE]
 ====
-Download the openshift client (cli) and docker. Make sure that the client version that you downloaded
-can cluster up v3.6 cluster and above and that the docker version is appropriate for openshift.  
+Download the OpenShift client (cli) and docker. Make sure that the client version that you downloaded
+can cluster up v3.6 cluster and above and that the docker version is appropriate for OpenShift.  
 ====
 
 Once installed, the only user that exists in the system is the `system:admin`
