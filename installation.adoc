@@ -120,6 +120,17 @@ section of the OpenShift documentation.
 yum -y install epel-release
 ----
 
+[NOTE]
+====
+if you get the following error message "ansible installer cannot find baseurl for repo base/7/x86_64 issue",
+it is a DNS issue. Try these commands:
+[source,bash,options="nowrap"]
+----
+ONBOOT=no
+dhclient
+----
+====
+
 . Optional but recommended: Update the newly installed system:
 +
 [source,bash,options="nowrap"]
@@ -157,11 +168,17 @@ section below.
 +
 [source,bash,options="nowrap"]
 ----
-ansible-playbook -i ./inventory.erb openshift-ansible/playbooks/byo/config.yml
+ansible-playbook -i ./inventory.erb openshift-ansible/playbooks/deploy_cluster.yml
 ----
 
 The installation will run, displaying the typical ansible output. The first
 installation will take longer as the nodes are initially prepared.
+
+[NOTE]
+====
+Download the OpenShift client (cli) and docker. Make sure that the client version that you downloaded
+can cluster up v3.6 cluster and above and that the docker version is appropriate for OpenShift.  
+====
 
 Once installed, the only user that exists in the system is the `system:admin`
 user. The installer adds the necessary token to the `.kubeconfig` file of
