@@ -59,6 +59,21 @@ Furthermore, make sure that the GOPATH is setup.
 Use the CLI to create a new memcached-operator project:
 
 ----
+operator-sdk new <operator-project-name> --api-version=<your-api-group>/<version>
+--kind=<custom-resource-kind>
+----
+
+* operator-project-name - The CLI generates the project skeleton under this 
+directory
+* your-api-group - This is the Kubernetes API group for the 
+https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[custom resource] 
+handled by our operator 
+* version - This is the Kubernetes API version for the custom resource handled 
+by our operator (e.g. v1alpha, beta etc see 
+https://kubernetes.io/docs/concepts/overview/kubernetes-api/[Kubernetes API versioning])
+* custom-resource-kind - The name of custom resource type
+
+----
 $ cd $GOPATH/src/github.com/example-inc/
 $ operator-sdk new memcached-operator --api-version=cache.example.com/v1alpha1 --kind=Memcached
 $ cd memcached-operator
@@ -86,8 +101,9 @@ CustomResource (CR) spec
 
 *_Watch for the Memcached custom resource definition_*
 
-By default, the memcached-operator watches Memcached resource events as shown in
-cmd/memcached-operator/main.go.
+The main.go placed under cmd/<operator-project-name> is the main entry point to 
+start and initialize the operator. By default, the memcached-operator watches 
+Memcached resource events as shown in cmd/memcached-operator/main.go.
 
 ----
 func main() {
@@ -98,6 +114,10 @@ func main() {
 ----
 
 *_Define the Memcached spec and status_*
+
+The Spec field is where we can define the structure for the specification of the 
+custom resource. There is also a Status field that is meant to be populated with
+information that describe the state of the custom resource object.
 
 Modify the spec and status of the Memcached CRD at pkg/apis/cache/v1alpha1/
 types.go:
@@ -123,8 +143,8 @@ $ operator-sdk generate k8s
 
 *_Define the Handler_*
 
-The reconciliation loop for an event is defined in the Handle() function at 
-pkg/stub/handler.go.
+The events related to the watched resources received from Kubernetes are 
+channeled into the Handle function at pkg/stub/handler.go.
 
 Replace this file with the reference implementation found 
 https://github.com/operator-framework/getting-started/blob/master/handler.go.tmpl#L7[here]. 
@@ -163,6 +183,12 @@ Kubernetes deployment manifests are generated in deploy/operator.yaml. The
 deployment image is set to the container image specified above.
 
 *_Deploy the Memcached Operator_*
+
+[NOTE]
+====
+Make sure your kubernetes cluster is started before this. Otherwise, run 
+minikube start in the terminal.
+====
 
 ----
 $ kubectl create -f deploy/rbac.yaml
