@@ -134,7 +134,7 @@ of this project to something other than “example-inc”.
 [NOTE]
 ====
 Update: Update the code you just replaced with the updated code
-https://github.com/operator-framework/operator-sdk/commit/34c317ef90e63a5e4d6ed29ca1826ee32b16f112#diff-7bcd1b78beaf078c430fa8d1fcc8ef2e[here].
+https://github.com/operator-framework/getting-started/pull/12/commits/4a2e8f347dc63fdb8e01f7f0c1bf2f7a12927fc7[here].
 ====
 
 [NOTE]
@@ -155,8 +155,8 @@ named “memcached-operator”.
 ----
 $ cd $GOPATH/src/github.com/example-inc/
 $ cd memcached-operator
-$ operator-sdk build quay.io/example/memcached-operator:v0.0.1
-$ docker push quay.io/example/memcached-operator:v0.0.1
+$ operator-sdk build quay.io/<user_name>/memcached-operator
+$ docker push quay.io/<user_name>/memcached-operator
 ----
 
 Kubernetes deployment manifests are generated in deploy/operator.yaml. The 
@@ -169,6 +169,19 @@ $ kubectl create -f deploy/rbac.yaml
 $ kubectl create -f deploy/crd.yaml
 $ kubectl create -f deploy/operator.yaml
 ----
+
+* deploy/rbac.yaml - This defines the 
+https://kubernetes.io/docs/reference/access-authn-authz/rbac/[RBAC] to be 
+created for the operator in case the Kubernetes cluster has RBAC enabled.
+
+* deploy/crd.yaml - This is for defining the specs of the 
+custom resource. This will be unmarshalled into an object and passed to the 
+operator.
+
+* deploy/operator.yaml - This is for installing the customer 
+resource definition and deploying the operator (custom controller). Any changes 
+to this file will be overwritten whenever operator-sdk build <your-docker-image>
+is executed.
 
 *_Verify that the Operator is running_*
 
@@ -219,8 +232,7 @@ Deploying an Operator is as simple as applying the Operator’s manifest to the
 desired namespace in the cluster.
 
 ----
-$ curl -Lo memcachedoperator.0.0.1.csv.yaml 
-https://raw.githubusercontent.com/operator-framework/getting-started/master/memcachedoperator.0.0.1.csv.yaml
+$ curl -Lo memcachedoperator.0.0.1.csv.yaml https://raw.githubusercontent.com/operator-framework/getting-started/master/memcachedoperator.0.0.1.csv.yaml
 $ kubectl apply -f memcachedoperator.0.0.1.csv.yaml
 $ kubectl get ClusterServiceVersion-v1s memcachedoperator.v0.0.1 -o json | jq 
 '.status'
