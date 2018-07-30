@@ -237,6 +237,15 @@ manage the lifecycle of all of the Operators (and their associated services) on
 a Kubernetes cluster. It runs as an Kubernetes extension and lets you use 
 kubectl for all the lifecycle management functions without any additional tools.
 
+*_Setup_*
+
+* Git clone https://github.com/operator-framework/operator-lifecycle-manager[OLM]
+* kubectl apply -f deploy/upstream/manifests/0.4.0 (or install the 
+https://github.com/operator-framework/operator-lifecycle-manager/blob/master/Documentation/install/install.md[OLM]
+with other methods)
+* Copy the memcached-operator folder that you just created in the folder where
+you cloned the above repository 
+
 *_Generate an Operator manifest_*
 
 The first step to leveraging the Operator Lifecycle Manager is to create a 
@@ -270,8 +279,8 @@ CustomResourceDefinition and RBAC rules for the Memcached type managed by the
 Operator:
 
 ----
-$ kubectl apply -f deploy/rbac.yaml
-$ sed '/---/q' deploy/operator.yaml | kubectl apply -f -
+$ kubectl apply -f memcached-operator/deploy/rbac.yaml
+$ sed '/---/q' memcached-operator/deploy/operator.yaml | kubectl apply -f -
 ----
 
 Because the Operator Lifecycle Manager creates Operators in a particular 
