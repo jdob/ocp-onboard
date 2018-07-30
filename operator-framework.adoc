@@ -25,10 +25,12 @@ center pieces of the framework:
 
 [NOTE]
 ====
-Requirements: Please make sure that the Operator SDK is installed on the 
-development machine. Additionally, the Operator Lifecycle Manager must be 
-installed in the cluster (1.8 or above to support the apps/v1beta2 API group) 
-before running this guide.
+Requirements: Please make sure that the 
+https://github.com/operator-framework/operator-sdk[Operator SDK] is installed on
+the development machine. Additionally, the 
+https://github.com/operator-framework/operator-lifecycle-manager/blob/master/Documentation/install/install.md[Operator Lifecycle Manager] 
+must be installed in the cluster (1.8 or above to support the apps/v1beta2 
+API group) before running this guide.
 ====
 
 [[operator_sdk]]
