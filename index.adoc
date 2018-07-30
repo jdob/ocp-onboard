@@ -31,6 +31,11 @@ application to be run on containers, or beginning new development, the
 integration guide can provide more information on how to use OpenShift in an
 active development environment.
 
+<<operator-framework,Operator Framework>> - If you're just beginning to port an
+application to be run on containers, or beginning new development, the
+integration guide can provide more information on how to use OpenShift in an
+active development environment.
+
 include::installation.adoc[]
 
 include::deployment.adoc[]
@@ -46,3 +51,5 @@ include::anatomy.adoc[]
 include::terminology.adoc[]
 
 include::involved.adoc[]
+
+include::operator-framework.adoc[]
